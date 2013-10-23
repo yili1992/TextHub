@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="no-touch no-mobile"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+{% load staticfiles %}
+<meta charset="utf-8">
+<meta name="description" content="一个真实的网络问答社区，帮助你寻找答案，分享知识。">
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>知乎 - 与世界分享你的知识、经验和见解</title>
+
+<link rel="stylesheet" href="{%static 'style.css'%}" type="text/css" media="screen,print">
+
+<script async="" src="{%static 'analytics.js'%}"></script>
+<script type="text/javascript" async="" src="{%static 'ga.js'%}">
+</script><script type="text/javascript" async="" src="{%static 'za.js'%}"></script><script>document.documentElement.className += ('ontouchstart' in window) ? ' touch' : ' no-touch'</script>
+</head>
+<body class="no-auth" style="">
+
+
+
+<div class="wrapper">
+<div class="top">
+<div class="inner-wrapper">
+<div class="form-wrapper" id="js-form-wrapper">
+<div class="logo"></div>
+
+<div id="js-sign-flow" class="desk-front sign-flow clearfix dialog">
+<div class="view view-signin " id="signin" style="display: none; ">
+<form method="post" action="http://www.zhihu.com/login" class="zu-side-login-box" novalidate="novalidate">
+<input type="hidden" name="_xsrf" value="83ff29379baf496b9cb2324f287f3427">
+<div class="title clearfix">
+<a class="js-signup signup-switch with-icon" href="http://www.zhihu.com/#signup">注册<i class="icon-sign icon-sign-arrow"></i></a>
+<a class="with-icon return">
+<i class="icon-sign icon-sign-arrow-l"></i><span class="js-title-label">登录知乎</span>
+</a>
+</div>
+<div class="email input-wrapper">
+<input required="" type="email" name="email" placeholder="邮箱">
+</div>
+<div class="input-wrapper">
+<input required="" type="password" name="password" maxlength="128" placeholder="密码">
+</div>
+<div class="captcha-holder"></div>
+<div class="js-captcha captcha-wrap" style="display: none; ">
+<div class="input-wrapper">
+<input id="captcha" name="checkcode" placeholder="验证码" disabled="">
+</div>
+<p class="input-wrapper captcha clearfix js-refresh-captcha">
+<span>看不清？</span> <a href="javascript:;">换一张</a>
+<img src="./static/checkcode.jpg" class="js-captcha-img">
+</p>
+</div>
+<div class="button-wrapper command">
+<button class="sign-button" type="submit">登录</button>
+</div>
+<div class="signin-misc-wrapper clearfix">
+<label class="remember-me">
+<input type="checkbox" name="rememberme" checked="" value="y"> 记住我
+</label>
+<a class="reset-password" target="_blank" href="http://www.zhihu.com/resetpassword">忘记密码？</a>
+</div>
+<a class="js-bindweibo" href="javascript:;"><i class="icon-sign icon-sign-sina"></i></a>
+<a class="js-bindqq" href="javascript:;"><i class="icon-sign icon-sign-qq"></i></a>
+</div>
+</form>
+</div>
+<div class="view view-signup selected" id="signup" style="display: block; ">
+<form action="http://www.zhihu.com/register/account" method="post" class="zu-side-login-box" id="sign-form-1" autocomplete="off" novalidate="novalidate">
+<input type="hidden" name="_xsrf" value="83ff29379baf496b9cb2324f287f3427">
+<div class="title clearfix">
+<a class="js-signin signin-switch with-icon" href="http://www.zhihu.com/#signin">登录<i class="icon-sign icon-sign-arrow"></i></a>
+<a class="with-icon return"><i class="icon-sign icon-sign-arrow-l"></i><span class="js-title-label">注册帐号</span></a>
+</div>
+<div class="name input-wrapper js-weibo-bind-name-transfer">
+<input required="" name="user" placeholder="用户">
+</div>
+<div class="email input-wrapper">
+<input required="" type="email" name="email" placeholder="邮箱">
+</div>
+<div class="input-wrapper">
+<input required="" type="password" minlength="6" maxlength="128" name="password" placeholder="密码">
+</div>
+<div class="captcha-holder"></div>
+<div class="failure" id="summary" style="display: none; "><ul></ul></div><div class="button-wrapper command">
+<button class="sign-button" type="submit">注册账号</button>
+</div>
+
+</form>
+</div>
+
+
+
+
+<div class="mobi-front">
+<div class="button-wrapper">
+<button class="sign-button js-signin" type="submit">登录知乎</button>
+</div>
+
+<div class="ft mobile">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bottom">
+<div class="inner-wrapper">
+<div class="stories zg-clear">
+
+
+
+
+
+<div class="single-story" style="width:700px;">
+<i class="icon-sign icon-sign-spike visible" style="top: 21px; "></i>
+
+<div class="single-story-inner topic">
+
+<div class="sep"></div>
+
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class="footer">
+<div class="links">
+
+<div>
+<a href="http://www.miibeian.gov.cn/" target="_blank">京 ICP 备 11010522 号</a>
+<span>·</span>
+<span>京公网安备 11010802010035 号</span>
+</div>
+</div>
+
+
+
+
+</div>
+
+</div>
+
+
+
+<input type="hidden" name="_xsrf" value="83ff29379baf496b9cb2324f287f3427">
+
+<div class="zh-backtotop" style="display:none"><a data-action="backtotop" data-tip="s$r$回到顶部" href="javascript:;" class="btn-backtotop btn-action"><div class="arrow"></div><div class="stick"></div></a></div><div id="zh-tooltip"></div></body></html>

@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>错误消息</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=UTF-8">
+<STYLE id=L_default_1>A {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #005a80; FONT-FAMILY: 宋体, tahoma
+}
+A:hover {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #0d3372; FONT-FAMILY: 宋体, tahoma
+}
+TD {
+	FONT-SIZE: 9pt; FONT-FAMILY: 宋体, tahoma
+}
+TD.titleBorder {
+	BORDER-RIGHT: #955319 1px solid; BORDER-TOP: #955319 1px solid; PADDING-LEFT: 8px; FONT-WEIGHT: bold; FONT-SIZE: 12pt; VERTICAL-ALIGN: middle; BORDER-LEFT: #955319 0px solid; COLOR: #955319; BORDER-BOTTOM: #955319 1px solid; FONT-FAMILY: 宋体, tahoma; HEIGHT: 35px; BACKGROUND-COLOR: #d2b87a; TEXT-ALIGN: left
+}
+TD.titleBorderx {
+	BORDER-RIGHT: #955319 0px solid; BORDER-TOP: #955319 1px solid; PADDING-LEFT: 8px; FONT-WEIGHT: bold; FONT-SIZE: 12pt; VERTICAL-ALIGN: middle; BORDER-LEFT: #955319 1px solid; COLOR: #978c79; BORDER-BOTTOM: #955319 1px solid; FONT-FAMILY: 宋体, tahoma; HEIGHT: 35px; BACKGROUND-COLOR: #d2b87a; TEXT-ALIGN: left
+}
+.TitleDescription {
+	FONT-WEIGHT: bold; FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体, tahoma
+}
+SPAN.explain {
+	FONT-WEIGHT: normal; FONT-SIZE: 10pt; COLOR: #934225
+}
+SPAN.TryThings {
+	FONT-WEIGHT: normal; FONT-SIZE: 10pt; COLOR: #934225
+}
+.TryList {
+	MARGIN-TOP: 5px; FONT-WEIGHT: normal; FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: 宋体, tahoma
+}
+.X {
+	BORDER-RIGHT: #955319 1px solid; BORDER-TOP: #955319 1px solid; FONT-WEIGHT: normal; FONT-SIZE: 12pt; BORDER-LEFT: #955319 1px solid; COLOR: #7b3807; BORDER-BOTTOM: #955319 1px solid; FONT-FAMILY: 宋体, verdana; BACKGROUND-COLOR: #d1c2b4
+}
+.adminList {
+	MARGIN-TOP: 2px
+}
+</STYLE>
+<META content="MSHTML 6.00.2800.1170" name=GENERATOR></HEAD>
+<BODY bgColor=#f3f3ed>
+<TABLE cellSpacing=0 cellPadding=0 width="100%">
+  <TBODY>
+  <TR>
+    <TD class=titleBorderx width=30>
+      <TABLE height=25 cellSpacing=2 cellPadding=0 width=25 bgColor=black>
+        <TBODY>
+        <TR>
+          <TD id=L_default_x class=x valign=middle align=center>X</TD>
+        </TR>
+        </TBODY>
+      </TABLE>
+    </TD>
+    <TD class=titleBorder id=L_default_2>网络访问消息:<SPAN class=TitleDescription> 无法显示此页</SPAN> </TD>
+  </TR>
+  </TBODY>
+</TABLE>
+
+<TABLE id=spacer>
+  <TBODY>
+  <TR>
+    <TD height=10></TD></TR></TBODY></TABLE>
+<TABLE width=400>
+  <TBODY>
+  <TR>
+    <TD noWrap width=25></TD>
+    <TD width=400><SPAN class=explain><ID id=L_default_3><B>解释:</B></ID></SPAN><ID id=L_default_4> 试图访问的页面出现问题，无法显示此页面。 </ID><BR><BR>
+    <B><SPAN class=tryThings><ID id=L_default_5><B>尝试下列:</B></ID></SPAN></B> 
+      <UL class=TryList>
+        <LI id=L_default_6><B>刷新页:</B> 单击“刷新”按钮来再次搜索此页。超时可能是由于 Internet 拥塞造成的。
+<LI id=L_default_7><B>检查拼写:</B> 请检查您是否正确键入了网页地址。键入的网页地址不正确。
+<LI id=L_default_8><B>从链接访问:</B> 如果有一个到您正在找的网页的链接，请尝试从该链接访问此页。
+
+      </UL>
+<ID id=L_default_9>如果您仍然看不到请求的页面，请与您的管理员或支持人员联系。</ID> <BR><BR>
+    </TD>
+  </TR>
+  </TBODY>
+</TABLE>
+
+<TABLE id=spacer><TBODY><TR><TD height=15></TD></TR></TBODY></TABLE>
+
+<TABLE width=400>
+  <TBODY>
+  <TR>
+    <TD noWrap width=25></TD>
+    <TD width=400 id=L_default_10><B>技术信息(提供给支持人员)</B> 
+      <UL class=adminList>
+        <LI id=L_default_11>错误代码: 502 Proxy Error。Forefront TMG 拒绝了指定的统一资源定位器(URL)。 (12202)
+<LI id=L_default_12>IP 地址: 192.168.60.72
+<LI id=L_default_13>日期: 2013/10/9 7:04:09 [GMT]
+<LI id=L_default_14>服务器: HSPROXY09.hs.handsome.com.cn
+<LI id=L_default_15>源: 代理
+
+      </UL>
+    </TD>
+  </TR>
+  </TBODY>
+</TABLE>
+
+</BODY>
+</HTML>
+

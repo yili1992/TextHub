@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<!-- saved from url=(0021)http://www.zhihu.com/ -->
+<html lang="zh-CN" dropeffect="none" class="no-touch js no-touch no-mobile" style="">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+{% load staticfiles %}
+<meta charset="utf-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<title>首页 - TextHub</title>
+
+<script async="" src="/static/analytics.js"></script>
+<script type="text/javascript" async="" src="/static/ga.js"></script><script type="text/javascript" async="" src="/static/za.js"></script>
+<link rel="stylesheet" href="/static/bd80dcc4ec449adf06670b068226708b.z.css" type="text/css" media="screen,print">
+<link rel="stylesheet" href="/static/win-chrome-punctuation.css" type="text/css" media="screen,print">
+<style type="text/css">
+#sddm div a
+	{	position: relative;
+		display: block;
+		margin: 0;
+		padding: 5px 10px;
+		width: auto;
+		white-space: nowrap;
+		text-align: left;
+		background: #0267CC;
+		color:#fff;
+		font: 12px arial
+		border-top:1px solid #0D5AA5;
+		overflow:hidden}
+
+	#sddm div a:hover
+	{	background-color:#0267CC}
+</style>
+<style>
+@font-face {
+font-family: 'Helvetica Neue';
+unicode-range: U+0600—06FF, U+0750—077F, U+08A0—08FF, U+FB50—FDFF, U+FE70—FEFF, U+10E60—10E7F, U+1EE00—1EEFF;
+src: local(Arial);
+}
+@font-face {
+font-family: 'Helvetica Neue';
+font-weight: bold;
+unicode-range: U+0600—06FF, U+0750—077F, U+08A0—08FF, U+FB50—FDFF, U+FE70—FEFF, U+10E60—10E7F, U+1EE00—1EEFF;
+src: local(Arial);
+}
+</style>
+<script src="/static/modernizr.custom.91502.js"></script>
+<script type="text/javascript">
+<!--
+var timeout         = 500;
+var closetimer		= 0;
+var ddmenuitem      = 0;
+
+// open hidden layer
+function mopen(id)
+{	
+	// cancel close timer
+	mcancelclosetime();
+
+	// close old layer
+	if(ddmenuitem) ddmenuitem.style.visibility = 'hidden';
+	console.log("-----------------");
+	// get new layer and show it
+	ddmenuitem = document.getElementById(id);
+	ddmenuitem.style.visibility = 'visible';
+
+}
+// close showed layer
+function mclose()
+{
+	if(ddmenuitem) ddmenuitem.style.visibility = 'hidden';
+}
+
+// go close timer
+function mclosetime()
+{
+	closetimer = window.setTimeout(mclose, timeout);
+}
+
+// cancel close timer
+function mcancelclosetime()
+{
+	if(closetimer)
+	{
+		window.clearTimeout(closetimer);
+		closetimer = null;
+	}
+}
+
+// close layer when click-out
+document.onclick = mclose; 
+// -->
+
+</script>
+
+</head>
+
+<body class="zhi" style="">
+<div role="navigation" class="zu-top" style="">
+<div class="zg-wrap" id="zh-top-inner" style="">
+<a class="zu-top-link-logo" id="zh-top-link-logo" style="">知乎</a>
+
+<div class="top-nav-profile" style="">
+<a href="http://www.zhihu.com/people/zhao-li-66" class="zu-top-nav-userinfo " id=":0" role="button" aria-haspopup="true" aria-activedescendant="" style="" aria-expanded="false">
+<span class="name" style="">赵立</span>
+<img class="avatar" src="/static/6c3b2735f_s.jpg" style="">
+<span id="zh-top-nav-new-pm" class="zg-noti-number zu-top-nav-pm-count" style="visibility: hidden;" data-count="0">
+</span>
+</a>
+<ul class="top-nav-dropdown" id="top-nav-profile-dropdown" aria-labelledby=":0" style="" aria-hidden="true">
+<li style="">
+<a href="http://www.zhihu.com/logout" tabindex="-1" id=":4" style="">
+<i class="zg-icon zg-icon-dd-logout" style=""></i>退出
+</a>
+</li>
+</ul>
+</div>
+<div role="search" id="zh-top-search" class="zu-top-search" style="">
+<form method="GET" action="http://www.zhihu.com/search" id="zh-top-search-form" class="zu-top-search-form form-with-magnify" style="">
+
+<input type="text" class="zu-top-search-input" id="q" name="q" autocomplete="off" value="" aria-haspopup="true" style="">
+<input type="hidden" name="type" value="question" style="">
+<button type="submit" class="magnify-button" style=""><i class="icon icon-magnify-q" style=""></i><span class="hide-text" style="">搜索</span></button>
+</form>
+<button class="zu-top-add-question" id="zu-top-add-question" style="">查询</button>
+</div>
+<div id="zg-top-nav" class="zu-top-nav" style="">
+<ul class="zu-top-nav-ul zg-clear" style="">
+
+<li class="zu-top-nav-li current" id="zh-top-home-link" style="">
+<a class="zu-top-nav-link" href="/static/首页 - 知乎.htm" id="zh-top-link-home" style="">首页</a>
+</li>
+<li class="zu-top-nav-li " style="">
+<a class="zu-top-nav-link" href="http://www.zhihu.com/explore" style="">管理</a>
+</li>
+<li class="top-nav-topic-selector zu-top-nav-li " id="zh-top-nav-item-topic" style="">
+
+<a class="zu-top-nav-link"  id="top-nav-dd-topic" href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'" class="messages" onmouseover="mopen('m1')" onmouseout="mclosetime()">发布</a>
+<div id="sddm">
+<div id="m1" onmouseover="mcancelclosetime()" onmouseout="mclosetime()" style="position: absolute;visibility: hidden;margin: 0;padding: 0;background: #EAEBD8;border: 1px solid #5970B2">
+<a  href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'" class="messages" >发布</a>
+<a  href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'" class="messages" >批量发布</a>
+</div>
+</div>
+</li>
+
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class="zg-wrap zu-main" role="main" style="">
+<div class="zu-main-content" style="">
+<div class="zu-main-content-inner" style="">
+<div class="zg-section" id="zh-home-list-title" style="">
+
+<div id="light" class="white_content" style="display:none">
+<script language="javascript">
+function Check()
+{ 
+     if (document.addform.TITLE.value.length==0) {
+  alert("提示：\n\n标题不能为空。");
+       return false;
+      } 
+     if (document.addform.CONTENT.value.length==0) {
+  alert("提示：\n\n您的段落内容不能为空。");
+       return false;
+      } 
+    
+     return true;
+}
+</script>
+
+<table width="454" border="0" align="center" cellpadding="0" cellspacing="1" bordercolorlight="#C0C0C0" bordercolordark="#FFFFFF" bgcolor="bebebe">
+                    <form class="js-add-question-form" name="addform"  onSubmit="return Check()">
+<div class="zg-section-big clearfix">
+<div class="zg-form-text-input add-question-title-form" style="position: relative;">
+<textarea class="zg-editor-input zu-seamless-input-origin-element" name=TITLE title="在这里输入标题" id="zh-question-suggest-title-content" aria-label="写下你的标题" placeholder="写下你的标题" aria-haspopup="true" autocomplete="off" style="white-space: pre; height: 22px; min-height: 22px;"></textarea>
+</div>
+<span id="js-title-length-err-msg" class="title-length-err-msg zg-right"></span>
+<div id="zh-question-suggest-ac-wrap" class="question-suggest-ac-wrap"></div>
+</div>
+<div class="zg-section-big">
+<div style="display: none;position: relative;" class="zm-modal-dialog-warnmsg-wrapper">
+<div class="zm-modal-dialog-warnmsg zm-modal-dialog-guide-warn-message zg-r5px"></div>
+<a name="close" title="关闭" href="javascript:;" class="zu-global-notify-close" style="display:none">x</a>
+<span class="zm-modal-dialog-guide-title-msg"></span>
+</div>
+<div class="add-question-section-title">
+
+<span class="zg-right extra-editor-toolbar">
+<div class="js-toggle-editor-toolbar goog-inline-block goog-link-button" role="button" style="-webkit-user-select: none;" title="切换工具栏"><i class="z-ico-textedit"></i></div>
+<div class="js-editor-add-pic goog-inline-block goog-link-button" role="button" style="-webkit-user-select: none;" title="添加图片"><i class="tr-inline-icon tr-image"></i></div>
+<div class="js-editor-add-video goog-inline-block goog-link-button" role="button" style="-webkit-user-select: none;" title="添加视频"><i class="tr-inline-icon tr-video"></i></div>
+</span>
+
+段落内容
+<span id="zh-question-form-detail-err"></span>
+</div>
+<div id="zh-question-suggest-detail-container" class="zm-editable-status-editing">
+<div class="zm-editable-content" data-disabled="1" style="display: none;">&nbsp;</div>
+<div class="zm-editable-editor-wrap no-toolbar" style="">
+	<div class="zm-editable-editor-outer">
+		<div class="zm-editable-toolbar-container goog-scrollfloater" style="display: none;">
+			<div class="goog-toolbar goog-toolbar-horizontal" style="-webkit-user-select: none;" role="toolbar" tabindex="-1">
+				<div class="goog-inline-block goog-toolbar-button" title="插入代码" aria-pressed="false" role="button" style="-webkit-user-select: none;" id="+code">
+					<div class="goog-inline-block goog-toolbar-button-outer-box" style="-webkit-user-select: none;">
+						<div class="goog-inline-block goog-toolbar-button-inner-box" style="-webkit-user-select: none;">
+							<div class="tr-icon tr-code" style="-webkit-user-select: none;">
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+<div class="zm-editable-editor-field-wrap">
+	<textarea class="zg-editor-input zu-seamless-input-origin-element" name=CONTENT title="在这里输入内容" id="text-content" aria-label="段落内容" placeholder="段落内容" aria-haspopup="true" autocomplete="off" style="white-space: pre; height: 100px; min-height: 22px;"></textarea>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="zm-add-question-form-topic-wrap">
+<div class="add-question-section-title">
+
+
+选择类别：
+</div>
+<div style="" id="zh-question-suggest-topic-container" class="zm-tag-editor zg-section">
+<div class="zm-tag-editor-editor zg-clear" style="">
+
+<div class="sug-con zg-clear" style="display:none;">
+</div>
+<div class="zm-command">
+<label class="zm-question-form-hide-in-about-question-el zg-left">
+<input type="checkbox" value="1" class="zg-addq-isanon">自动分类
+<span class="zm-question-form-split">&nbsp;</span>
+</label>
+<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'" class="left1" name="cancel" class="zm-command-cancel">取消</a>
+<input type=submit name=Action class="zg-r5px zu-question-form-add zg-btn-blue" value="发布">
+
+<a href="" name="jumpq" class="zg-r5px zg-btn-blue zu-question-form-jump" style="display:none;">查看问题</a>
+</div>
+</form>
+                  </table>
+</div> 
+<div id="fade" class="black_overlay"></div>
+最新动态<input type="hidden" id="feed-ver" value="new" style="">
+</div>
+<div class="zu-main-feed-con navigable" id="zh-question-list" data-widget="navigable" data-navigable-options="{&quot;items&quot;:&quot;&gt;.zh-general-list&gt;.feed-item&quot;}" style="">
+<div class="home-suggest-block" id="home-suggest-block" style="">
+<div style="">
+<div class="head" style="">
+</div>
+</div>
+</div>
+
+<a href="javascript:;" class="zu-main-feed-fresh-button" id="zh-main-feed-fresh-button" style="display: none;"></a>
+<div id="js-home-feed-list" class="zh-general-list clearfix" data-init="{&quot;params&quot;: {}, &quot;nodename&quot;: &quot;HomeFeedListV2&quot;}" style="">
+<div class="feed-item folding feed-item-hook feed-item-a
+
+" id="feed-a2441136_104_0" data-qid="755179" data-aid="2441136" data-type="a" data-feedtype="ANSWER_VOTE_UP" tabindex="-1" data-fid=":c" style="">
+<div class="avatar" style="">
+<a title="钢盅郭子" data-tip="p$t$unogzx" class="zm-item-link-avatar" target="_blank" href="http://www.zhihu.com/people/unogzx" style="">
+<img src="/static/079025da0_m.jpg" class="zm-item-img-avatar" style="">
+</a>
+</div>
+<div class="feed-main" style="">
+<div class="source" style="">
+<span class="time" data-timestamp="1381299409000" style="">这里显示类别</span>
+<span class="time" data-timestamp="1381299409000" style="">这里显示时间</span>
+</div>
+<div class="content" style="">
+<h2 style=""><a class="question_link" target="_blank" href="http://www.zhihu.com/question/21436142" style="">《环太平洋》有没有吸取EVA的元素？</a></h2>
+<div class="entry-body " data-aid="2441136" data-atoken="18233854" data-collapsed="False" data-created="1375813796" data-deleted="0" data-isowner="0" data-helpful="1" data-score="0" style="">
+<div class="zm-item-answer-detail" style="">
+<div class="zm-item-rich-text" data-resourceid="755179" data-action="/answer/content" style="">
+
+<div class="zh-summary summary clearfix" style="">
+<img data-rawheight="1079" data-rawwidth="1919" src="/static/14c2dea5bedc0028a544811bb5e84d18_m.jpg" class="origin_image inline-img zh-lightbox-thumb" data-original="http://p2.zhimg.com/14/c2/14c2dea5bedc0028a544811bb5e84d18_r.jpg" style="">
+没有。或者说很少，且只是巧合。  网传的致谢名单是错误的，该提的没有，不该提的一大堆。之前我在电影院看了三遍，每次都看完完整的片尾字幕，都致敬了谁，记得清清楚楚。但口说无凭，昨天终于网上有高清源了，以截图为证。 看见了吗，日文名有且只有一人——…
+
+<a href="http://www.zhihu.com/question/21436142/answer/18233854" class="toggle-expand" style="">显示全部</a>
+
+</div>
+
+</div>
+</div>
+</div>
+<div class="feed-meta" style="">
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+
+<a data-follow="q:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-402823"><i class="z-icon-follow"></i>修改</a>
+<a href="javascript:;" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>删除</a>
+
+</div>
+</div>
+</div>
+</div>
+</div></div>
+<a href="javascript:;" id="zh-load-more" data-method="next" class="zg-btn-white zg-r3px zu-button-more" style="">更多</a>
+</div>
+</div>
+</div>
+<div class="zu-main-sidebar" style="">
+
+<div class="zm-side-section" style="">
+<div class="zm-side-section-inner" style="">
+<div class="zm-side-nav-group" style="">
+<ul class="zm-side-nav" id="zg-sidebar-nav" style="">
+<li class="zm-side-nav-li" style="">
+<a class="zm-side-nav-link" href="http://www.zhihu.com/draft" style="">
+<i class="zg-icon zg-icon-sidenav-draft" style=""></i>
+我的草稿
+
+</a>
+</li>
+
+</ul>
+</div>
+<div class="zm-side-nav-group" style="">
+<ul class="zm-side-nav" style="">
+<li class="zm-side-nav-li" style="">
+<a class="zm-side-nav-link" href="http://www.zhihu.com/log/questions" style="">
+<i class="zg-icon zg-icon-sidenav-all" style=""></i>
+所有问题
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="zh-footer" class="zu-footer" style="">
+<div class="zg-wrap zu-footer-inner" style="">
+</div>
+</div>
+
+<script style="">var DZMT = DZMT || [];
+DZMT.push(['form_key', "88515879-285601881675210527736750158061577671551985865031"]);
+DZMT.push([ 'current_user', ["\u8d75\u7acb", "zhao-li-66", "http://p2.zhimg.com/6c/3b/6c3b2735f_s.jpg", "1a66dd13bd2dbc0e4ed16b2c3617a5db", "\u4e92\u8054\u7f51\u7231\u597d\u8005\uff0cno do,no die", 0, 0, 1, "281048790@qq.com", "http://mail.qq.com", 1, false] ]);
+
+DZMT.push(['env', ["zhihu.com", "comet.zhihu.com", false, false ]]);
+DZMT.push(['permissions', []])
+
+</script>
+<script style="">
+window.oldConsole = window.console
+</script>
+<script src="/static/jsapi" style=""></script>
+<script style="">
+window.console = window.oldConsole
+</script>
+
+<script src="/static/9414ca5d72f72403f51f90bb1cfc73fb.extern_src.min.js" style=""></script>
+<script src="/static/c69d37e7b85e1786aa3256def7ae9593.app_core.js" style=""></script>
+<script src="/static/ed7589caaa1fb8506b27bbbd3d8cc7d8.sign.js" style=""></script>
+
+<script style="">
+ZH.main();
+ZH.ill();
+</script>
+<script src="/static/765f6579ec01b032569e1d22c9f5ad6b.app.js" style=""></script>
+<script src="/static/f51100fc8010880db6ac44ab44cc7cc2.rich_text_editor.js" style=""></script>
+<script style="">
+ZH.entryHome();
+</script>
+
+
+<input type="hidden" name="_xsrf" value="25563a936c5243b69cae14782ac99742" style="">
+
+<div class="zh-backtotop" style="opacity: 1;"><a data-action="backtotop" data-tip="s$r$回到顶部" href="javascript:;" class="btn-backtotop btn-action" style=""><div class="arrow" style=""></div><div class="stick" style=""></div></a></div><div id="zh-tooltip" style="visibility: hidden; left: 943px; top: 7195px; display: none;" class="tooltip right"><div class="tooltip-arrow"></div><div class="tooltip-inner">回到顶部</div></div><div id="zh-global-spinner" style="display: none;">加载中…</div></body></html>
