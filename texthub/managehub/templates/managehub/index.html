@@ -122,7 +122,6 @@ document.onclick = mclose;
 
 <input type="text" class="zu-top-search-input" id="q" name="q" autocomplete="off" value="" aria-haspopup="true" style="">
 <input type="hidden" name="type" value="question" style="">
-<button type="submit" class="magnify-button" style=""><i class="icon icon-magnify-q" style=""></i><span class="hide-text" style="">搜索</span></button>
 </form>
 <button class="zu-top-add-question" id="zu-top-add-question" style="">查询</button>
 </div>
@@ -316,25 +315,37 @@ function Check()
 <div class="zm-side-nav-group" style="">
 <ul class="zm-side-nav" id="zg-sidebar-nav" style="">
 <li class="zm-side-nav-li" style="">
-<a class="zm-side-nav-link" href="http://www.zhihu.com/draft" style="">
+<a class="zm-side-nav-link" href="" style="">
 <i class="zg-icon zg-icon-sidenav-draft" style=""></i>
-我的草稿
-
+我的分类
 </a>
 </li>
-
 </ul>
 </div>
+{%for etype in essay_type%}
+<a class="zm-side-nav-link" href="/1/{{etype.id}}/" title="{{etype}}" style="">
+<i class="zg-icon zg-icon-sidenav-draft" style=""></i>
+{{etype}}({{etype.essay_set.count}})
+</a>
+{%endfor%}
 <div class="zm-side-nav-group" style="">
 <ul class="zm-side-nav" style="">
 <li class="zm-side-nav-li" style="">
 <a class="zm-side-nav-link" href="http://www.zhihu.com/log/questions" style="">
 <i class="zg-icon zg-icon-sidenav-all" style=""></i>
-所有问题
+经常浏览
 </a>
 </li>
 </ul>
 </div>
+<a class="zm-side-nav-link" href="" style="">
+<i class="zg-icon zg-icon-sidenav-draft" style=""></i>
+aaaa
+</a>
+<a class="zm-side-nav-link" href="" style="">
+<i class="zg-icon zg-icon-sidenav-draft" style=""></i>
+aaa
+</a>
 </div>
 </div>
 <div id="zh-footer" class="zu-footer" style="">
