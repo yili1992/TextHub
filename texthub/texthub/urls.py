@@ -4,7 +4,6 @@ from views import *
 admin.autodiscover()
 urlpatterns = patterns('',
 	url(r'^$', home),
-	url(r'^(?P<pageNo>\d+)/$','managehub.views.index',name='index'),
 	url(r'^essay/(?P<eid>\d+)/$','managehub.views.essay_details',name='essay_details'),
 	url(r'^search/$','managehub.views.search',name='search'),
 	url(r'^leavemsg/(?P<eid>\d+)/$','managehub.views.leave_comment',name='leave_comment'),

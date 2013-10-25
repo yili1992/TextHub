@@ -10,9 +10,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
 <title>首页 - TextHub</title>
-
-<script async="" src="/static/analytics.js"></script>
-<script type="text/javascript" async="" src="/static/ga.js"></script><script type="text/javascript" async="" src="/static/za.js"></script>
 <link rel="stylesheet" href="/static/bd80dcc4ec449adf06670b068226708b.z.css" type="text/css" media="screen,print">
 <link rel="stylesheet" href="/static/win-chrome-punctuation.css" type="text/css" media="screen,print">
 <style type="text/css">
@@ -46,7 +43,6 @@ unicode-range: U+0600—06FF, U+0750—077F, U+08A0—08FF, U+FB50—FDFF, U+FE7
 src: local(Arial);
 }
 </style>
-<script src="/static/modernizr.custom.91502.js"></script>
 <script type="text/javascript">
 <!--
 var timeout         = 500;
@@ -230,6 +226,13 @@ function Check()
 
 
 选择类别：
+<select name="etype">
+{%for etype in essay_type%}
+
+<option value="{{etype}}">{{etype}}</option>
+
+{%endfor%}
+</select>
 </div>
 <div style="" id="zh-question-suggest-topic-container" class="zm-tag-editor zg-section">
 <div class="zm-tag-editor-editor zg-clear" style="">
@@ -252,40 +255,29 @@ function Check()
 <div id="fade" class="black_overlay"></div>
 最新动态<input type="hidden" id="feed-ver" value="new" style="">
 </div>
-<div class="zu-main-feed-con navigable" id="zh-question-list" data-widget="navigable" data-navigable-options="{&quot;items&quot;:&quot;&gt;.zh-general-list&gt;.feed-item&quot;}" style="">
-<div class="home-suggest-block" id="home-suggest-block" style="">
-<div style="">
-<div class="head" style="">
-</div>
-</div>
-</div>
+<div class="zu-main-feed-con navigable" id="zh-question-list"  style="">
+<div id="js-home-feed-list" class="zh-general-list clearfix"  style="">
 
-<a href="javascript:;" class="zu-main-feed-fresh-button" id="zh-main-feed-fresh-button" style="display: none;"></a>
-<div id="js-home-feed-list" class="zh-general-list clearfix" data-init="{&quot;params&quot;: {}, &quot;nodename&quot;: &quot;HomeFeedListV2&quot;}" style="">
-<div class="feed-item folding feed-item-hook feed-item-a
+<div class="feed-item folding feed-item-hook feed-item-a"  style="">
 
-" id="feed-a2441136_104_0" data-qid="755179" data-aid="2441136" data-type="a" data-feedtype="ANSWER_VOTE_UP" tabindex="-1" data-fid=":c" style="">
+{%for essay in essaydetails%}
 <div class="avatar" style="">
-<a title="钢盅郭子" data-tip="p$t$unogzx" class="zm-item-link-avatar" target="_blank" href="http://www.zhihu.com/people/unogzx" style="">
 <img src="/static/079025da0_m.jpg" class="zm-item-img-avatar" style="">
-</a>
 </div>
 <div class="feed-main" style="">
 <div class="source" style="">
-<span class="time" data-timestamp="1381299409000" style="">这里显示类别</span>
-<span class="time" data-timestamp="1381299409000" style="">这里显示时间</span>
+
+<span class="time"  style="">{{essay.eType}}</span>
+<span class="time"  style="">{{essay.pub_date.year}} {{essay.pub_date.ctime.split.1}} {{essay.pub_date.day}}</span>
 </div>
 <div class="content" style="">
-<h2 style=""><a class="question_link" target="_blank" href="http://www.zhihu.com/question/21436142" style="">《环太平洋》有没有吸取EVA的元素？</a></h2>
-<div class="entry-body " data-aid="2441136" data-atoken="18233854" data-collapsed="False" data-created="1375813796" data-deleted="0" data-isowner="0" data-helpful="1" data-score="0" style="">
+<h2 style=""><a class="question_link" target="_blank" href="#" style="">{{essay.title}}</a></h2>
+<div class="entry-body " style="">
 <div class="zm-item-answer-detail" style="">
-<div class="zm-item-rich-text" data-resourceid="755179" data-action="/answer/content" style="">
+<div class="zm-item-rich-text" style="">
 
 <div class="zh-summary summary clearfix" style="">
-<img data-rawheight="1079" data-rawwidth="1919" src="/static/14c2dea5bedc0028a544811bb5e84d18_m.jpg" class="origin_image inline-img zh-lightbox-thumb" data-original="http://p2.zhimg.com/14/c2/14c2dea5bedc0028a544811bb5e84d18_r.jpg" style="">
-没有。或者说很少，且只是巧合。  网传的致谢名单是错误的，该提的没有，不该提的一大堆。之前我在电影院看了三遍，每次都看完完整的片尾字幕，都致敬了谁，记得清清楚楚。但口说无凭，昨天终于网上有高清源了，以截图为证。 看见了吗，日文名有且只有一人——…
-
-<a href="http://www.zhihu.com/question/21436142/answer/18233854" class="toggle-expand" style="">显示全部</a>
+{{essay.content}}
 
 </div>
 
@@ -303,6 +295,44 @@ function Check()
 </div>
 </div>
 </div>
+</br>
+{%endfor%}
+<!--
+<div class="feed-main" style="">
+<div class="source" style="">
+<span class="time"  style="">这里显示类别</span>
+<span class="time"  style="">这里显示时间</span>
+</div>
+<div class="content" style="">
+<h2 style=""><a class="question_link" target="_blank" href="#" style="">《环太平洋》有没有吸取EVA的元素？</a></h2>
+<div class="entry-body " style="">
+<div class="zm-item-answer-detail" style="">
+<div class="zm-item-rich-text" style="">
+
+<div class="zh-summary summary clearfix" style="">
+没有。或者说很少，且只是巧合。  网传的致谢名单是错误的，该提的没有，不该提的一大堆。之前我在电影院看了三遍，每次都看完完整的片尾字幕，都致敬了谁，记得清清楚楚。但口说无凭，昨天终于网上有高清源了，以截图为证。 看见了吗，日文名有且只有一人——…
+
+<a href="#" style="">显示全部</a>
+
+</div>
+
+</div>
+</div>
+</div>
+<div class="feed-meta" style="">
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+
+<a data-follow="q:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-402823"><i class="z-icon-follow"></i>修改</a>
+<a href="javascript:;" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>删除</a>
+
+</div>
+</div>
+</div>
+</div>
+
+
+-->
 </div></div>
 <a href="javascript:;" id="zh-load-more" data-method="next" class="zg-btn-white zg-r3px zu-button-more" style="">更多</a>
 </div>
@@ -328,6 +358,7 @@ function Check()
 {{etype}}({{etype.essay_set.count}})
 </a>
 {%endfor%}
+</br>
 <div class="zm-side-nav-group" style="">
 <ul class="zm-side-nav" style="">
 <li class="zm-side-nav-li" style="">
@@ -338,14 +369,12 @@ function Check()
 </li>
 </ul>
 </div>
+{%for vessay in vies%}
 <a class="zm-side-nav-link" href="" style="">
 <i class="zg-icon zg-icon-sidenav-draft" style=""></i>
-aaaa
+{{vessay}}
 </a>
-<a class="zm-side-nav-link" href="" style="">
-<i class="zg-icon zg-icon-sidenav-draft" style=""></i>
-aaa
-</a>
+{%endfor%}
 </div>
 </div>
 <div id="zh-footer" class="zu-footer" style="">
@@ -353,37 +382,23 @@ aaa
 </div>
 </div>
 
-<script style="">var DZMT = DZMT || [];
-DZMT.push(['form_key', "88515879-285601881675210527736750158061577671551985865031"]);
-DZMT.push([ 'current_user', ["\u8d75\u7acb", "zhao-li-66", "http://p2.zhimg.com/6c/3b/6c3b2735f_s.jpg", "1a66dd13bd2dbc0e4ed16b2c3617a5db", "\u4e92\u8054\u7f51\u7231\u597d\u8005\uff0cno do,no die", 0, 0, 1, "281048790@qq.com", "http://mail.qq.com", 1, false] ]);
-
-DZMT.push(['env', ["zhihu.com", "comet.zhihu.com", false, false ]]);
-DZMT.push(['permissions', []])
-
-</script>
-<script style="">
-window.oldConsole = window.console
-</script>
-<script src="/static/jsapi" style=""></script>
-<script style="">
-window.console = window.oldConsole
-</script>
-
-<script src="/static/9414ca5d72f72403f51f90bb1cfc73fb.extern_src.min.js" style=""></script>
-<script src="/static/c69d37e7b85e1786aa3256def7ae9593.app_core.js" style=""></script>
-<script src="/static/ed7589caaa1fb8506b27bbbd3d8cc7d8.sign.js" style=""></script>
-
-<script style="">
-ZH.main();
-ZH.ill();
-</script>
-<script src="/static/765f6579ec01b032569e1d22c9f5ad6b.app.js" style=""></script>
-<script src="/static/f51100fc8010880db6ac44ab44cc7cc2.rich_text_editor.js" style=""></script>
-<script style="">
-ZH.entryHome();
-</script>
 
 
 <input type="hidden" name="_xsrf" value="25563a936c5243b69cae14782ac99742" style="">
 
-<div class="zh-backtotop" style="opacity: 1;"><a data-action="backtotop" data-tip="s$r$回到顶部" href="javascript:;" class="btn-backtotop btn-action" style=""><div class="arrow" style=""></div><div class="stick" style=""></div></a></div><div id="zh-tooltip" style="visibility: hidden; left: 943px; top: 7195px; display: none;" class="tooltip right"><div class="tooltip-arrow"></div><div class="tooltip-inner">回到顶部</div></div><div id="zh-global-spinner" style="display: none;">加载中…</div></body></html>
+<div class="zh-backtotop" style="opacity: 1;">
+	<a data-action="backtotop" data-tip="s$r$回到顶部" href="#top" class="btn-backtotop btn-action" style="">
+		<div class="arrow" style="">
+			
+		</div>
+		<div class="stick" style="">
+		</div>
+	</a>
+</div>
+<div id="zh-tooltip" style="visibility: hidden; left: 943px; top: 7195px; display: none;" class="tooltip right">
+<div class="tooltip-arrow">
+</div>
+<div class="tooltip-inner" >回到顶部</div>
+</div>
+<div id="zh-global-spinner" style="display: none;">加载中…</div>
+</body></html>

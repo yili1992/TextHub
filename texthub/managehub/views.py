@@ -13,11 +13,7 @@ from django.core.context_processors import csrf
 from django.views.decorators.csrf import csrf_protect
 
 @csrf_protect
-def index(request,pageNo=None,etype=None,keyword=None):  
-    try:  
-        pgNo=int(pageNo)  
-    except:  
-        pgNo=1  
+def index(request,etype=None,keyword=None):  
     try:  
         etype=int(etype)  
     except:  
@@ -27,21 +23,13 @@ def index(request,pageNo=None,etype=None,keyword=None):
     elif keyword:  
           
         datas=Essay.objects.all().filter(Q(title__icontains=keyword)|Q(abstract__icontains=keyword)|Q(content__icontains=keyword)).distinct() 
-
     else:  
         datas=Essay.objects.all()
-    recentList=datas[:5]  
-    paginator = Paginator(datas, 5)  
-    if pgNo==0:  
-        pgNo=1  
-    if pgNo>paginator.num_pages:  
-        pgNo=paginator.num_pages  
-    curPage=paginator.page(pgNo)
+    viewsList=datas.order_by('-view_count')[:5]   
     context={
-            'page':curPage,  
+            'essaydetails':datas.order_by('pub_date'),
             'essay_type':EssayType.objects.all(),  
-            'pcount':paginator.num_pages,  
-            'recent':recentList}
+            'vies':viewsList}
     context.update(csrf(request))
     return render_to_response('managehub/index.html',context)
 #文章详细信息

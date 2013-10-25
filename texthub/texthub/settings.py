@@ -69,15 +69,7 @@ STATIC_ROOT = ''
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
 STATIC_URL = '/static/'
-TINYMCE_JS_URL='/static/js/tiny_mce/tiny_mce_src.js'
-TINYMCE_JS_ROOT='/static/js/tiny_mce'
-TINYMCE_DEFAULT_CONFIG={
-    'theme':'advanced',
-    'theme_advanced_toolbar_location':'top',
-    'theme_advanced_toolbar_align':'left',
-    'width':600,
-    'height':400,
-}
+
 # Additional locations of static files
 STATICFILES_DIRS = (
     'D:/texthub/texthub/static',
@@ -131,7 +123,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'managehub',
-    'tinymce',
+
 )
 TEMPLATE_DIRS=(
         os.path.join(os.path.dirname(__file__), 'templates').replace('\\', '/'),
