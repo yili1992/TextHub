@@ -7,7 +7,6 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import render,get_object_or_404,render_to_response
 from django.core.paginator import Paginator  
 import datetime  
-from django.core.urlresolvers import reverse
 from django.db.models import Q  
 from django.core.context_processors import csrf
 from django.views.decorators.csrf import csrf_protect
@@ -27,7 +26,7 @@ def index(request,etype=None,keyword=None):
         datas=Essay.objects.all()
     viewsList=datas.order_by('-view_count')[:5]   
     context={
-            'essaydetails':datas.order_by('pub_date'),
+            'essaydetails':datas.order_by('-pub_date'),
             'essay_type':EssayType.objects.all(),  
             'vies':viewsList}
     context.update(csrf(request))
@@ -62,9 +61,16 @@ def search(request):
         return index(request,keyword=key)
     else:
         return index(request)
-    
+#删除文章
+def delete(request,eid=None):
+    essay=Essay.objects.get(id=eid)
+    if request.session.get('e'+str(eid),True):
+        request.session['e'+str(eid)]=False
+        essay.delete()
+        return index(request)
+    return index(request)
 
-#存储用户留言信息
+#发布信息
 def publish(request):
     if request.method == 'POST':
         title=request.POST.get('TITLE',None)
@@ -85,5 +91,5 @@ def publish(request):
             essay.save()
             return index(request)
         return HttpResponse('error1.')
-    return HttpResponse('error2.')
+    return HttpResponse('请勿重复提交')
 

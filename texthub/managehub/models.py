@@ -35,7 +35,8 @@ class EssayType(models.Model):
     def __unicode__(self):  
         return self.tname  
 #文章列表,verbose_name就是等下再后台中字段的名称        
-class Essay(models.Model):  
+class Essay(models.Model):
+    id=models.AutoField('id',primary_key=True)   
     eType=models.ForeignKey(EssayType,  
     verbose_name='所属类别')
     title=models.CharField(max_length=25,  

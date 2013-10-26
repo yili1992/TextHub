@@ -280,8 +280,16 @@ function Check()
 <div class="feed-meta" style="">
 <div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
 
-<a data-follow="q:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-402823"><i class="z-icon-follow"></i>修改</a>
-<a href="javascript:;" name="addcomment" class=" meta-item toggle-comment">
+<a href="/delete/{{essay.id}}/" data-follow="q:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-402823"><i class="z-icon-follow"></i>修改</a>
+<script> 
+function winconfirm(){ 
+	question = confirm("你确认删除吗？") 
+	if (question != "0"){ 
+		window.open(eid) 
+	} 
+} 
+</script>
+<a  href="/delete/{{essay.id}}/" name="deleteessay" class=" meta-item toggle-comment" onclick="winconfirm(); return false;">
 <i class="z-icon-comment"></i>删除</a>
 
 </div>
@@ -290,42 +298,7 @@ function Check()
 </div>
 </br>
 {%endfor%}
-<!--
-<div class="feed-main" style="">
-<div class="source" style="">
-<span class="time"  style="">这里显示类别</span>
-<span class="time"  style="">这里显示时间</span>
-</div>
-<div class="content" style="">
-<h2 style=""><a class="question_link" target="_blank" href="#" style="">《环太平洋》有没有吸取EVA的元素？</a></h2>
-<div class="entry-body " style="">
-<div class="zm-item-answer-detail" style="">
-<div class="zm-item-rich-text" style="">
 
-<div class="zh-summary summary clearfix" style="">
-没有。或者说很少，且只是巧合。  网传的致谢名单是错误的，该提的没有，不该提的一大堆。之前我在电影院看了三遍，每次都看完完整的片尾字幕，都致敬了谁，记得清清楚楚。但口说无凭，昨天终于网上有高清源了，以截图为证。 看见了吗，日文名有且只有一人——…
-
-<a href="#" style="">显示全部</a>
-
-</div>
-
-</div>
-</div>
-</div>
-<div class="feed-meta" style="">
-<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
-
-<a data-follow="q:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-402823"><i class="z-icon-follow"></i>修改</a>
-<a href="javascript:;" name="addcomment" class=" meta-item toggle-comment">
-<i class="z-icon-comment"></i>删除</a>
-
-</div>
-</div>
-</div>
-</div>
-
-
--->
 </div></div>
 <a href="javascript:;" id="zh-load-more" data-method="next" class="zg-btn-white zg-r3px zu-button-more" style="">更多</a>
 </div>
