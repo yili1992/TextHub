@@ -65,23 +65,25 @@ def search(request):
     
 
 #存储用户留言信息
-def leave_comment(request,eid=None):
-    if request.method == 'POST' and eid:
-        uname=request.POST.get('uname',None)
-        content=request.POST.get('comment',None)
-        email=request.POST.get('email',None)
-        essay=Essay.objects.get(id=eid)
-        import re
-        if uname and content and email and essay:
-            comment=Comment()
-            comment.uname=re.sub("<[\\s]*?script[^>]*?>[\\s\\S]*?<[\\s]*?\\/[\\s]*",'',uname)
-            comment.content=re.sub("<[\\s]*?script[^>]*?>[\\s\\S]*?<[\\s]*?\\/[\\s]*",'',content)
-            comment.email=re.sub("<[\\s]*?script[^>]*?>[\\s\\S]*?<[\\s]*?\\/[\\s]*",'',email)
-            comment.essay=essay
-            comment.pub_date=datetime.datetime.now()
-            comment.save()
-            return essay_details(request,eid)
-        return index(request)
-    
-    return index(request)
+def publish(request):
+    if request.method == 'POST':
+        title=request.POST.get('TITLE',None)
+        content=request.POST.get('ECONTENT',None)
+        etypename=request.POST.get('ETYPE',None)
+        if etypename == u'\u672a\u9009\u62e9':
+            newtype=EssayType()
+            newtype.tname=request.POST.get('Newtype',None)
+            newtype.save()
+            etypename=newtype.tname
+        etype=EssayType.objects.get(tname=etypename)
+        if title and content and etype :
+            essay=Essay()
+            essay.title=title
+            essay.content=content
+            essay.eType=etype
+            essay.pub_date=datetime.datetime.now()
+            essay.save()
+            return index(request)
+        return HttpResponse('error1.')
+    return HttpResponse('error2.')
 

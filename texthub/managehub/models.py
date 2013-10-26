@@ -38,8 +38,6 @@ class EssayType(models.Model):
 class Essay(models.Model):  
     eType=models.ForeignKey(EssayType,  
     verbose_name='所属类别')
-    eUser=models.ForeignKey(Users,
-    verbose_name='所属用户')  
     title=models.CharField(max_length=25,  
     verbose_name='文章标题')  
     content=models.TextField(max_length=2000,  

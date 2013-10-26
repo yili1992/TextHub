@@ -161,8 +161,12 @@ function Check()
   alert("提示：\n\n标题不能为空。");
        return false;
       } 
-     if (document.addform.CONTENT.value.length==0) {
+     if (document.addform.ECONTENT.value.length==0) {
   alert("提示：\n\n您的段落内容不能为空。");
+       return false;
+      } 
+     if (document.addform.ETYPE.value=="未选择"&&document.addform.Newtype.value.length==0) {
+  alert("提示：\n\n类别不能为空。");
        return false;
       } 
     
@@ -171,50 +175,28 @@ function Check()
 </script>
 
 <table width="454" border="0" align="center" cellpadding="0" cellspacing="1" bordercolorlight="#C0C0C0" bordercolordark="#FFFFFF" bgcolor="bebebe">
-                    <form class="js-add-question-form" name="addform"  onSubmit="return Check()">
+                    <form class="js-add-question-form" action="/publish/" name="addform"  onSubmit="return Check()" method="post" id="Eassy_form">
+                    	{%csrf_token%}
 <div class="zg-section-big clearfix">
 <div class="zg-form-text-input add-question-title-form" style="position: relative;">
-<textarea class="zg-editor-input zu-seamless-input-origin-element" name=TITLE title="在这里输入标题" id="zh-question-suggest-title-content" aria-label="写下你的标题" placeholder="写下你的标题" aria-haspopup="true" autocomplete="off" style="white-space: pre; height: 22px; min-height: 22px;"></textarea>
+<textarea class="zg-editor-input zu-seamless-input-origin-element" name=TITLE title="在这里输入标题" id="title" aria-label="写下你的标题" placeholder="写下你的标题" aria-haspopup="true" autocomplete="off" style="white-space: pre; height: 22px; min-height: 22px;"></textarea>
 </div>
 <span id="js-title-length-err-msg" class="title-length-err-msg zg-right"></span>
 <div id="zh-question-suggest-ac-wrap" class="question-suggest-ac-wrap"></div>
 </div>
 <div class="zg-section-big">
-<div style="display: none;position: relative;" class="zm-modal-dialog-warnmsg-wrapper">
-<div class="zm-modal-dialog-warnmsg zm-modal-dialog-guide-warn-message zg-r5px"></div>
-<a name="close" title="关闭" href="javascript:;" class="zu-global-notify-close" style="display:none">x</a>
-<span class="zm-modal-dialog-guide-title-msg"></span>
-</div>
 <div class="add-question-section-title">
-
-<span class="zg-right extra-editor-toolbar">
-<div class="js-toggle-editor-toolbar goog-inline-block goog-link-button" role="button" style="-webkit-user-select: none;" title="切换工具栏"><i class="z-ico-textedit"></i></div>
-<div class="js-editor-add-pic goog-inline-block goog-link-button" role="button" style="-webkit-user-select: none;" title="添加图片"><i class="tr-inline-icon tr-image"></i></div>
-<div class="js-editor-add-video goog-inline-block goog-link-button" role="button" style="-webkit-user-select: none;" title="添加视频"><i class="tr-inline-icon tr-video"></i></div>
-</span>
 
 段落内容
 <span id="zh-question-form-detail-err"></span>
 </div>
 <div id="zh-question-suggest-detail-container" class="zm-editable-status-editing">
-<div class="zm-editable-content" data-disabled="1" style="display: none;">&nbsp;</div>
+
 <div class="zm-editable-editor-wrap no-toolbar" style="">
-	<div class="zm-editable-editor-outer">
-		<div class="zm-editable-toolbar-container goog-scrollfloater" style="display: none;">
-			<div class="goog-toolbar goog-toolbar-horizontal" style="-webkit-user-select: none;" role="toolbar" tabindex="-1">
-				<div class="goog-inline-block goog-toolbar-button" title="插入代码" aria-pressed="false" role="button" style="-webkit-user-select: none;" id="+code">
-					<div class="goog-inline-block goog-toolbar-button-outer-box" style="-webkit-user-select: none;">
-						<div class="goog-inline-block goog-toolbar-button-inner-box" style="-webkit-user-select: none;">
-							<div class="tr-icon tr-code" style="-webkit-user-select: none;">
-								
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+<div class="zm-editable-editor-outer">
+
 <div class="zm-editable-editor-field-wrap">
-	<textarea class="zg-editor-input zu-seamless-input-origin-element" name=CONTENT title="在这里输入内容" id="text-content" aria-label="段落内容" placeholder="段落内容" aria-haspopup="true" autocomplete="off" style="white-space: pre; height: 100px; min-height: 22px;"></textarea>
+	<textarea class="zg-editor-input zu-seamless-input-origin-element" name=ECONTENT econtent="在这里输入内容" id="econtent" aria-label="段落内容" placeholder="段落内容" aria-haspopup="true" autocomplete="off" style="white-space: pre; height: 100px; min-height: 22px;"></textarea>
 </div>
 </div>
 </div>
@@ -226,13 +208,24 @@ function Check()
 
 
 选择类别：
-<select name="etype">
+<select name=ETYPE etypes,id="etypes">
+<option value="未选择">未选择</option>
 {%for etype in essay_type%}
 
 <option value="{{etype}}">{{etype}}</option>
 
 {%endfor%}
 </select>
+
+<a href="#" >
+<input type=button  class="zg-r5px zu-question-form-add zg-btn-blue" value="增加类别" onclick = "document.getElementById('typelight').style.display='block'">
+</a>
+<div id="typelight" class="white_content" style="display:none">
+<div class="zg-form-text-input add-question-title-form" style="position: relative; width: 100px;">
+<textarea class="zg-editor-input zu-seamless-input-origin-element" name=Newtype ntype="输入类别名" id="ntype"
+ aria-label="输入类别名" placeholder="输入类别名" aria-haspopup="true" autocomplete="off"style="white-space: pre; height: 22px; min-height: 22px;"></textarea>
+</div>
+</div>
 </div>
 <div style="" id="zh-question-suggest-topic-container" class="zm-tag-editor zg-section">
 <div class="zm-tag-editor-editor zg-clear" style="">
@@ -245,7 +238,7 @@ function Check()
 <span class="zm-question-form-split">&nbsp;</span>
 </label>
 <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'" class="left1" name="cancel" class="zm-command-cancel">取消</a>
-<input type=submit name=Action class="zg-r5px zu-question-form-add zg-btn-blue" value="发布">
+<input type='submit' id="submit" name=Action class="zg-r5px zu-question-form-add zg-btn-blue" value="发布">
 
 <a href="" name="jumpq" class="zg-r5px zg-btn-blue zu-question-form-jump" style="display:none;">查看问题</a>
 </div>
