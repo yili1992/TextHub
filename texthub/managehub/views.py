@@ -11,17 +11,24 @@ from django.db.models import Q
 from django.core.context_processors import csrf
 from django.views.decorators.csrf import csrf_protect
 
+temp=None
+
 @csrf_protect
 def index(request,etype=None,keyword=None):  
     try:  
         etype=int(etype)  
     except:  
-        etype=None    
-    if etype:  
+        etype=None 
+    if temp and keyword:
+        datas=Essay.objects.all().filter(eType=temp).filter(Q(title__icontains=keyword)|Q(content__icontains=keyword)).distinct()
+        global temp
+        temp=None   
+    elif etype:  
         datas=Essay.objects.all().filter(eType=etype)
+        global temp
+        temp=etype
     elif keyword:  
-          
-        datas=Essay.objects.all().filter(Q(title__icontains=keyword)|Q(abstract__icontains=keyword)|Q(content__icontains=keyword)).distinct() 
+        datas=Essay.objects.all().filter(Q(title__icontains=keyword)|Q(content__icontains=keyword)).distinct() 
     else:  
         datas=Essay.objects.all()
     viewsList=datas.order_by('-view_count')[:5]   
@@ -64,10 +71,8 @@ def search(request):
 #删除文章
 def delete(request,eid=None):
     essay=Essay.objects.get(id=eid)
-    if request.session.get('e'+str(eid),True):
-        request.session['e'+str(eid)]=False
-        essay.delete()
-        return index(request)
+    essay.delete()
+    return index(request)
     return index(request)
 
 #发布信息

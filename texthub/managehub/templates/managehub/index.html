@@ -114,18 +114,18 @@ document.onclick = mclose;
 </ul>
 </div>
 <div role="search" id="zh-top-search" class="zu-top-search" style="">
-<form method="GET" action="http://www.zhihu.com/search" id="zh-top-search-form" class="zu-top-search-form form-with-magnify" style="">
-
-<input type="text" class="zu-top-search-input" id="q" name="q" autocomplete="off" value="" aria-haspopup="true" style="">
-<input type="hidden" name="type" value="question" style="">
+<form method="post" action="/search/" id="zh-top-search-form" class="zu-top-search-form form-with-magnify" style="">
+{% csrf_token %}
+<input type="text" class="zu-top-search-input" id="keyword" name="keyword" autocomplete="off" value="" aria-haspopup="true" style="">
+<button type="submit" id="searchsubmit" class="zu-top-add-question" id="zu-top-add-question" style="">查询</button>
 </form>
-<button class="zu-top-add-question" id="zu-top-add-question" style="">查询</button>
+
 </div>
 <div id="zg-top-nav" class="zu-top-nav" style="">
 <ul class="zu-top-nav-ul zg-clear" style="">
 
 <li class="zu-top-nav-li current" id="zh-top-home-link" style="">
-<a class="zu-top-nav-link" href="/static/首页 - 知乎.htm" id="zh-top-link-home" style="">首页</a>
+<a class="zu-top-nav-link" href="/managehub/index/" id="zh-top-link-home" style="">首页</a>
 </li>
 <li class="zu-top-nav-li " style="">
 <a class="zu-top-nav-link" href="http://www.zhihu.com/explore" style="">管理</a>
@@ -319,7 +319,7 @@ function winconfirm(){
 </ul>
 </div>
 {%for etype in essay_type%}
-<a class="zm-side-nav-link" href="/1/{{etype.id}}/" title="{{etype}}" style="">
+<a class="zm-side-nav-link" href="/etype/{{etype.id}}/" title="{{etype}}" style="">
 <i class="zg-icon zg-icon-sidenav-draft" style=""></i>
 {{etype}}({{etype.essay_set.count}})
 </a>
