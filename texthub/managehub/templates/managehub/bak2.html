@@ -150,6 +150,39 @@ document.onclick = mclose;
 </div>
 <div class="zg-wrap zu-main" role="main" style="">
 <div class="zu-main-content" style="">
+<form action="/save/{{essay.id}}/" name="modyform"   method="post" id="Mody_form">
+<!-- start of content -->
+{%csrf_token%}
+<div class="zu-main-content-inner" id="zh-single-question">
+
+<div id="zh-question-title" class="zm-editable-status-editing">
+<div class="zm-editable-editor-wrap clearfix" style="">
+	<div class="zm-editable-editor-outer">
+		<div class="zm-editable-editor-inner zg-form-text-input">
+			<textarea class="zm-editable-editor-input" name=MZTITLE mtitle id="mtitle" >{{essay.title}}</textarea>
+		</div>
+	</div>
+</div>
+</div>
+<div id="zh-question-detail" class="zm-item-rich-text zm-editable-status-editing" data-resourceid="659546" data-action="/question/detail">
+
+<div class="zm-editable-editor-wrap" style="">
+	<div class="zm-editable-editor-outer">
+		<div class="zm-editable-editor-field-wrap">
+			<div id="mock:a" class="zm-editable-editor-field-element editable" g_editable="true" contenteditable="true" name=MZTITLE mtitle id="mtitle">{{essay.content}}
+			</div>
+		</div>
+	</div>
+
+<div class="zm-command">
+	<a class="zm-command-cancel" name="cancel" href="/managehub/index">取消</a>
+	<input type='submit' id="submit" name=Action class="zg-r5px zu-question-form-add zg-btn-blue" value="保存">
+</div>
+</div>
+</div>
+</div>
+</form>
+<!-- end of content -->
 <div class="zu-main-content-inner" style="">
 <div class="zg-section" id="zh-home-list-title" style="">
 
@@ -240,67 +273,15 @@ function Check()
 <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'" class="left1" name="cancel" class="zm-command-cancel">取消</a>
 <input type='submit' id="submit" name=Action class="zg-r5px zu-question-form-add zg-btn-blue" value="发布">
 
+<a href="" name="jumpq" class="zg-r5px zg-btn-blue zu-question-form-jump" style="display:none;">查看问题</a>
 </div>
 </form>
                   </table>
+
 </div> 
-<div id="fade" class="black_overlay"></div>
-最新动态<input type="hidden" id="feed-ver" value="new" style="">
-</div>
-<div class="zu-main-feed-con navigable" id="zh-question-list"  style="">
-<div id="js-home-feed-list" class="zh-general-list clearfix"  style="">
-
-<div class="feed-item folding feed-item-hook feed-item-a"  style="">
-
-{%for essay in essaydetails%}
-<div class="avatar" style="">
-<img src="/static/079025da0_m.jpg" class="zm-item-img-avatar" style="">
-</div>
-<div class="feed-main" style="">
-<div class="source" style="">
-
-<span class="time"  style="">{{essay.eType}}</span>
-<span class="time"  style="">{{essay.pub_date.year}} {{essay.pub_date.ctime.split.1}} {{essay.pub_date.day}}</span>
-</div>
-<div class="content" style="">
-<h2 style=""><a class="question_link" target="_blank" href="#" style="">{{essay.title}}</a></h2>
-<div class="entry-body " style="">
-<div class="zm-item-answer-detail" style="">
-<div class="zm-item-rich-text" style="">
-
-<div class="zh-summary summary clearfix" style="">
-{{essay.content}}
 
 </div>
 
-</div>
-</div>
-</div>
-<div class="feed-meta" style="">
-<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
-
-<a href="/mody/{{essay.id}}" data-follow="q:link" class="follow-link zg-follow meta-item"  id="sfb-402823"><i class="z-icon-follow"></i>修改</a>
-<script> 
-function winconfirm(){ 
-	question = confirm("你确认删除吗？") 
-	if (question != "0"){ 
-		window.open(eid) 
-	} 
-} 
-</script>
-<a  href="/delete/{{essay.id}}/" name="deleteessay" class=" meta-item toggle-comment" onclick="winconfirm(); return false;">
-<i class="z-icon-comment"></i>删除</a>
-
-</div>
-</div>
-</div>
-</div>
-</br>
-{%endfor%}
-
-</div></div>
-<a href="javascript:;" id="zh-load-more" data-method="next" class="zg-btn-white zg-r3px zu-button-more" style="">更多</a>
-</div>
 </div>
 </div>
 <div class="zu-main-sidebar" style="">

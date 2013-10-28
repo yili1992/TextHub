@@ -150,29 +150,51 @@ document.onclick = mclose;
 </div>
 <div class="zg-wrap zu-main" role="main" style="">
 <div class="zu-main-content" style="">
+<form action="/save/{{essay.id}}/" name="addform"   method="post" id="Mody_form">
+<!-- start of content -->
+{%csrf_token%}
+<div class="zu-main-content-inner" id="zh-single-question">
+
+<div id="zh-question-title" class="zm-editable-status-editing">
+<div class="zg-section-big clearfix">
+<div class="zg-form-text-input add-question-title-form" style="position: relative;">
+<textarea class="zg-editor-input zu-seamless-input-origin-element" name=MZTITLE mtitle id="mtitle" style="white-space: pre; height: 22px; min-height: 22px;">{{essay.title}}</textarea>
+</div>
+
+
+</div>
+<div class="zg-section-big">
+
+<div id="zh-question-suggest-detail-container" class="zm-editable-status-editing">
+
+<div class="zm-editable-editor-wrap no-toolbar" style="">
+<div class="zm-editable-editor-outer">
+
+<div class="zm-editable-editor-field-wrap">
+	<textarea class="zg-editor-input zu-seamless-input-origin-element" name=MCONTENT mcontent id="mcontent" style="white-space: pre; height: 100px; min-height: 22px;">{{essay.content}}</textarea>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div style="" id="zh-question-suggest-topic-container" class="zm-tag-editor zg-section">
+
+
+
+<a href="/managehub/index"  class="zm-command-cancel">取消</a>
+<input type='submit' id="submit" name=Action class="zg-r5px zu-question-form-add zg-btn-blue" value="发布">
+
+
+</div>
+</form>
+<!-- end of content -->
 <div class="zu-main-content-inner" style="">
 <div class="zg-section" id="zh-home-list-title" style="">
 
 <div id="light" class="white_content" style="display:none">
-<script language="javascript">
-function Check()
-{ 
-     if (document.addform.TITLE.value.length==0) {
-  alert("提示：\n\n标题不能为空。");
-       return false;
-      } 
-     if (document.addform.ECONTENT.value.length==0) {
-  alert("提示：\n\n您的段落内容不能为空。");
-       return false;
-      } 
-     if (document.addform.ETYPE.value=="未选择"&&document.addform.Newtype.value.length==0) {
-  alert("提示：\n\n类别不能为空。");
-       return false;
-      } 
-    
-     return true;
-}
-</script>
+
 
 <table width="454" border="0" align="center" cellpadding="0" cellspacing="1" bordercolorlight="#C0C0C0" bordercolordark="#FFFFFF" bgcolor="bebebe">
                     <form class="js-add-question-form" action="/publish/" name="addform"  onSubmit="return Check()" method="post" id="Eassy_form">
@@ -207,145 +229,30 @@ function Check()
 <div class="add-question-section-title">
 
 
-选择类别：
-<select name=ETYPE etypes,id="etypes">
-<option value="未选择">未选择</option>
-{%for etype in essay_type%}
-
-<option value="{{etype}}">{{etype}}</option>
-
-{%endfor%}
-</select>
-
-<a href="#" >
-<input type=button  class="zg-r5px zu-question-form-add zg-btn-blue" value="增加类别" onclick = "document.getElementById('typelight').style.display='block'">
-</a>
-<div id="typelight" class="white_content" style="display:none">
-<div class="zg-form-text-input add-question-title-form" style="position: relative; width: 100px;">
-<textarea class="zg-editor-input zu-seamless-input-origin-element" name=Newtype ntype="输入类别名" id="ntype"
- aria-label="输入类别名" placeholder="输入类别名" aria-haspopup="true" autocomplete="off"style="white-space: pre; height: 22px; min-height: 22px;"></textarea>
-</div>
-</div>
 </div>
 <div style="" id="zh-question-suggest-topic-container" class="zm-tag-editor zg-section">
 <div class="zm-tag-editor-editor zg-clear" style="">
 
-<div class="sug-con zg-clear" style="display:none;">
-</div>
 <div class="zm-command">
-<label class="zm-question-form-hide-in-about-question-el zg-left">
-<input type="checkbox" value="1" class="zg-addq-isanon">自动分类
-<span class="zm-question-form-split">&nbsp;</span>
-</label>
-<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'" class="left1" name="cancel" class="zm-command-cancel">取消</a>
+
+<a href = "managehub/index/" class="left1" name="cancel" class="zm-command-cancel">取消</a>
 <input type='submit' id="submit" name=Action class="zg-r5px zu-question-form-add zg-btn-blue" value="发布">
+
 
 </div>
 </form>
                   </table>
+
 </div> 
-<div id="fade" class="black_overlay"></div>
-最新动态<input type="hidden" id="feed-ver" value="new" style="">
-</div>
-<div class="zu-main-feed-con navigable" id="zh-question-list"  style="">
-<div id="js-home-feed-list" class="zh-general-list clearfix"  style="">
-
-<div class="feed-item folding feed-item-hook feed-item-a"  style="">
-
-{%for essay in essaydetails%}
-<div class="avatar" style="">
-<img src="/static/079025da0_m.jpg" class="zm-item-img-avatar" style="">
-</div>
-<div class="feed-main" style="">
-<div class="source" style="">
-
-<span class="time"  style="">{{essay.eType}}</span>
-<span class="time"  style="">{{essay.pub_date.year}} {{essay.pub_date.ctime.split.1}} {{essay.pub_date.day}}</span>
-</div>
-<div class="content" style="">
-<h2 style=""><a class="question_link" target="_blank" href="#" style="">{{essay.title}}</a></h2>
-<div class="entry-body " style="">
-<div class="zm-item-answer-detail" style="">
-<div class="zm-item-rich-text" style="">
-
-<div class="zh-summary summary clearfix" style="">
-{{essay.content}}
 
 </div>
 
-</div>
-</div>
-</div>
-<div class="feed-meta" style="">
-<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
-
-<a href="/mody/{{essay.id}}" data-follow="q:link" class="follow-link zg-follow meta-item"  id="sfb-402823"><i class="z-icon-follow"></i>修改</a>
-<script> 
-function winconfirm(){ 
-	question = confirm("你确认删除吗？") 
-	if (question != "0"){ 
-		window.open(eid) 
-	} 
-} 
-</script>
-<a  href="/delete/{{essay.id}}/" name="deleteessay" class=" meta-item toggle-comment" onclick="winconfirm(); return false;">
-<i class="z-icon-comment"></i>删除</a>
-
-</div>
-</div>
-</div>
-</div>
-</br>
-{%endfor%}
-
-</div></div>
-<a href="javascript:;" id="zh-load-more" data-method="next" class="zg-btn-white zg-r3px zu-button-more" style="">更多</a>
-</div>
 </div>
 </div>
 <div class="zu-main-sidebar" style="">
 
 <div class="zm-side-section" style="">
-<div class="zm-side-section-inner" style="">
-<div class="zm-side-nav-group" style="">
-<ul class="zm-side-nav" id="zg-sidebar-nav" style="">
-<li class="zm-side-nav-li" style="">
-<a class="zm-side-nav-link" href="" style="">
-<i class="zg-icon zg-icon-sidenav-draft" style=""></i>
-我的分类
-</a>
-</li>
-</ul>
-</div>
-{%for etype in essay_type%}
-<a class="zm-side-nav-link" href="/etype/{{etype.id}}/" title="{{etype}}" style="">
-<i class="zg-icon zg-icon-sidenav-draft" style=""></i>
-{{etype}}({{etype.essay_set.count}})
-</a>
-{%endfor%}
-</br>
-<div class="zm-side-nav-group" style="">
-<ul class="zm-side-nav" style="">
-<li class="zm-side-nav-li" style="">
-<a class="zm-side-nav-link" href="http://www.zhihu.com/log/questions" style="">
-<i class="zg-icon zg-icon-sidenav-all" style=""></i>
-经常浏览
-</a>
-</li>
-</ul>
-</div>
-{%for vessay in vies%}
-<a class="zm-side-nav-link" href="" style="">
-<i class="zg-icon zg-icon-sidenav-draft" style=""></i>
-{{vessay}}
-</a>
-{%endfor%}
-</div>
-</div>
-<div id="zh-footer" class="zu-footer" style="">
-<div class="zg-wrap zu-footer-inner" style="">
-</div>
-</div>
+
 
 
 

@@ -74,6 +74,41 @@ def delete(request,eid=None):
     essay.delete()
     return index(request)
     return index(request)
+#更新文章
+def mody(request,eid=None):
+    essay=get_object_or_404(Essay,id=eid)
+    #新用户的Session
+    if request.session.get('e'+str(eid),True):
+        request.session['e'+str(eid)]=False
+        #这里可以用一个timer实现，浏览次数保存在内存中，
+        #timer定期将浏览次数提交到数据库
+        #文章浏览次数+1
+        essay.view_count=essay.view_count+1
+        essay.save()
+    datas=Essay.objects.all()
+    viewsList=datas.order_by('-view_count')[:5]   
+    context={
+            'essay':essay,
+            'essaydetails':datas.order_by('-pub_date'),
+            'essay_type':EssayType.objects.all(),  
+            'vies':viewsList}
+    context.update(csrf(request))
+    return render_to_response('managehub/mody.html',context)
+#保存更新
+def save(request,eid=None):
+    essay=get_object_or_404(Essay,id=eid)
+    if request.method == 'POST':
+        title=request.POST.get('MTITLE',None)
+        content=request.POST.get('MCONTENT',None)
+        if title and content :
+            essay.title=title
+            essay.content=content
+            essay.pub_date=datetime.datetime.now()
+            essay.save()
+            return index(request)
+        return HttpResponse('error1.')
+    return HttpResponse('请勿重复提交')
+
 
 #发布信息
 def publish(request):
