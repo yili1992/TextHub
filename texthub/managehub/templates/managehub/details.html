@@ -152,18 +152,18 @@ document.onclick = mclose;
 <div class="zu-main-content" style="">
 
 <!-- start of content -->
-
-
-<h1 > <font size="12px">{{essay.title}}</font> </h1>
+<div class="zu-main-content-inner" id="zh-single-question">
+<div id="zh-question-title" class="zm-editable-status-editing">
+<h1 > <font size="10px">{{essay.title}}</font> </h1>
 <span >属于<a href="/etype/{{essay.eType_id}}/" title="查看该类所有文章" rel="category">{{essay.eType}}</a>. on {{date_format.0}}, {{date_format.1}} {{date_format.2}}th, {{date_format.3}} by JM</span>
 <br></br>
-<font size="5px">
+<font size="4px">
 {{essay.content|safe}}
 </font>
 <br></br>
 浏览: {{essay.view_count}}   次
-
-
+</div>
+</div>
 <!-- end of content -->
 <div class="zu-main-content-inner" style="">
 <div class="zg-section" id="zh-home-list-title" style="">
