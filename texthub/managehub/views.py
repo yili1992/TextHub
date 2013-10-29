@@ -43,7 +43,6 @@ def index(request,etype=None,keyword=None):
 def essay_details(request,eid=None):
     #返回文章详细信息或者404页面
     essay=get_object_or_404(Essay,id=eid)
-    recentList=Essay.objects.all()[:5]
     #新用户的Session
     if request.session.get('e'+str(eid),True):
         request.session['e'+str(eid)]=False
@@ -52,11 +51,12 @@ def essay_details(request,eid=None):
         #文章浏览次数+1
         essay.view_count=essay.view_count+1
         essay.save()
+    viewsList=Essay.objects.all().order_by('-view_count')[:5]
     context={
     'essay':essay,
     'essay_type':EssayType.objects.all(),
     'date_format':essay.pub_date.strftime('%A %B %d %Y').split(),
-    'recent':recentList
+    'vies':viewsList
     }
     context.update(csrf(request))
     return render_to_response('managehub/details.html',context)

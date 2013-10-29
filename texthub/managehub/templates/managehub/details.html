@@ -100,7 +100,7 @@ document.onclick = mclose;
 
 <div class="top-nav-profile" style="">
 <a href="http://www.zhihu.com/people/zhao-li-66" class="zu-top-nav-userinfo " id=":0" role="button" aria-haspopup="true" aria-activedescendant="" style="" aria-expanded="false">
-<span class="name" style="">赵立</span>
+<span class="name" style="">yili1992</span>
 <img class="avatar" src="/static/6c3b2735f_s.jpg" style="">
 <span id="zh-top-nav-new-pm" class="zg-noti-number zu-top-nav-pm-count" style="visibility: hidden;" data-count="0">
 </span>
@@ -150,45 +150,20 @@ document.onclick = mclose;
 </div>
 <div class="zg-wrap zu-main" role="main" style="">
 <div class="zu-main-content" style="">
-<form action="/save/{{essay.id}}/" name="addform"   method="post" id="Mody_form">
+
 <!-- start of content -->
-{%csrf_token%}
-<div class="zu-main-content-inner" id="zh-single-question">
-
-<div id="zh-question-title" class="zm-editable-status-editing">
-<div class="zg-section-big clearfix">
-<div class="zg-form-text-input add-question-title-form" style="position: relative;">
-<textarea class="zg-editor-input zu-seamless-input-origin-element" name=MZTITLE mtitle id="mtitle" style="white-space: pre; height: 22px; min-height: 22px;">{{essay.title}}</textarea>
-</div>
 
 
-</div>
-<div class="zg-section-big">
-
-<div id="zh-question-suggest-detail-container" class="zm-editable-status-editing">
-
-<div class="zm-editable-editor-wrap no-toolbar" style="">
-<div class="zm-editable-editor-outer">
-
-<div class="zm-editable-editor-field-wrap">
-	<textarea class="zg-editor-input zu-seamless-input-origin-element" name=MCONTENT mcontent id="mcontent" style="white-space: pre; height: 100px; min-height: 22px;">{{essay.content}}</textarea>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<div style="" id="zh-question-suggest-topic-container" class="zm-tag-editor zg-section">
+<h1 > <font size="12px">{{essay.title}}</font> </h1>
+<span >属于<a href="/etype/{{essay.eType_id}}/" title="查看该类所有文章" rel="category">{{essay.eType}}</a>. on {{date_format.0}}, {{date_format.1}} {{date_format.2}}th, {{date_format.3}} by JM</span>
+<br></br>
+<font size="5px">
+{{essay.content|safe}}
+</font>
+<br></br>
+浏览: {{essay.view_count}}   次
 
 
-
-<a href="/managehub/index"  class="zm-command-cancel">取消</a>
-<input type='submit' id="submit" name=Action class="zg-r5px zu-question-form-add zg-btn-blue" value="发布">
-
-
-</div>
-</form>
 <!-- end of content -->
 <div class="zu-main-content-inner" style="">
 <div class="zg-section" id="zh-home-list-title" style="">
@@ -196,52 +171,6 @@ document.onclick = mclose;
 <div id="light" class="white_content" style="display:none">
 
 
-<table width="454" border="0" align="center" cellpadding="0" cellspacing="1" bordercolorlight="#C0C0C0" bordercolordark="#FFFFFF" bgcolor="bebebe">
-                    <form class="js-add-question-form" action="/publish/" name="addform"  onSubmit="return Check()" method="post" id="Eassy_form">
-                    	{%csrf_token%}
-<div class="zg-section-big clearfix">
-<div class="zg-form-text-input add-question-title-form" style="position: relative;">
-<textarea class="zg-editor-input zu-seamless-input-origin-element" name=TITLE title="在这里输入标题" id="title" aria-label="写下你的标题" placeholder="写下你的标题" aria-haspopup="true" autocomplete="off" style="white-space: pre; height: 22px; min-height: 22px;"></textarea>
-</div>
-<span id="js-title-length-err-msg" class="title-length-err-msg zg-right"></span>
-<div id="zh-question-suggest-ac-wrap" class="question-suggest-ac-wrap"></div>
-</div>
-<div class="zg-section-big">
-<div class="add-question-section-title">
-
-段落内容
-<span id="zh-question-form-detail-err"></span>
-</div>
-<div id="zh-question-suggest-detail-container" class="zm-editable-status-editing">
-
-<div class="zm-editable-editor-wrap no-toolbar" style="">
-<div class="zm-editable-editor-outer">
-
-<div class="zm-editable-editor-field-wrap">
-	<textarea class="zg-editor-input zu-seamless-input-origin-element" name=ECONTENT econtent="在这里输入内容" id="econtent" aria-label="段落内容" placeholder="段落内容" aria-haspopup="true" autocomplete="off" style="white-space: pre; height: 100px; min-height: 22px;"></textarea>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="zm-add-question-form-topic-wrap">
-<div class="add-question-section-title">
-
-
-</div>
-<div style="" id="zh-question-suggest-topic-container" class="zm-tag-editor zg-section">
-<div class="zm-tag-editor-editor zg-clear" style="">
-
-<div class="zm-command">
-
-<a href = "managehub/index/" class="left1" name="cancel" class="zm-command-cancel">取消</a>
-<input type='submit' id="submit" name=Action class="zg-r5px zu-question-form-add zg-btn-blue" value="发布">
-
-
-</div>
-</form>
-                  </table>
 
 </div> 
 
@@ -252,7 +181,46 @@ document.onclick = mclose;
 <div class="zu-main-sidebar" style="">
 
 <div class="zm-side-section" style="">
-
+<div class="zm-side-section-inner" style="">
+<div class="zm-side-nav-group" style="">
+<ul class="zm-side-nav" id="zg-sidebar-nav" style="">
+<li class="zm-side-nav-li" style="">
+<a class="zm-side-nav-link" href="" style="">
+<i class="zg-icon zg-icon-sidenav-draft" style=""></i>
+我的分类
+</a>
+</li>
+</ul>
+</div>
+{%for etype in essay_type%}
+<a class="zm-side-nav-link" href="/etype/{{etype.id}}/" title="{{etype}}" style="">
+<i class="zg-icon zg-icon-sidenav-draft" style=""></i>
+{{etype}}({{etype.essay_set.count}})
+</a>
+{%endfor%}
+</br>
+<div class="zm-side-nav-group" style="">
+<ul class="zm-side-nav" style="">
+<li class="zm-side-nav-li" style="">
+<a class="zm-side-nav-link" href="http://www.zhihu.com/log/questions" style="">
+<i class="zg-icon zg-icon-sidenav-all" style=""></i>
+经常浏览
+</a>
+</li>
+</ul>
+</div>
+{%for vessay in vies%}
+<a class="zm-side-nav-link" href="" style="">
+<i class="zg-icon zg-icon-sidenav-draft" style=""></i>
+{{vessay}}
+</a>
+{%endfor%}
+</div>
+</div>
+<div id="zh-footer" class="zu-footer" style="">
+<div class="zg-wrap zu-footer-inner" style="">
+</div>
+</div>
 
 
 
