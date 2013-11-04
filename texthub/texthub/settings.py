@@ -2,6 +2,7 @@
 import os
 import sys
 epath=os.path.dirname(__file__).replace('\\', '/')
+SITE_ROOT=os.path.join(os.path.abspath(os.path.dirname(__file__)),'..')
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -53,12 +54,12 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = os.path.join(SITE_ROOT,'site_media')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://example.com/media/", "http://media.example.com/"
-MEDIA_URL = ''
+MEDIA_URL = '/site_media/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -72,7 +73,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    'D:/texthub/texthub/static',
+    os.path.join(SITE_ROOT,'static'),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -127,10 +128,7 @@ INSTALLED_APPS = (
 )
 TEMPLATE_DIRS=(
         os.path.join(os.path.dirname(__file__), 'templates').replace('\\', '/'),
-         '/path/to/texthub/polls/templates',
-         '/path/to/texthub/blog/templates',
-         '/path/to/texthub/websee/templates',
-         'D:/texthub/texthub/templates',
+         '/path/to/texthub/managehub/templates',
              # Change this to your own directory.
     )
 # A sample logging configuration. The only tangible logging

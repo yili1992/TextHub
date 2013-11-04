@@ -6,5 +6,6 @@ from django.utils import timezone
 
 urlpatterns = patterns('',
     url(r'^index','managehub.views.index',name='index'),
+    url(r'^uploadify_script/', 'uploadify_script',name="uploadify_script"),
 
 )

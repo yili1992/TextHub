@@ -10,8 +10,45 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
 <title>首页 - TextHub</title>
+
+<link href="/site_media/plugin/uploadify_214/uploadify.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="/site_media/js/jquery.js"></script>
+<script type="text/javascript" src="/site_media/plugin/uploadify_214/swfobject.js"></script>
+<script type="text/javascript" src="/site_media/plugin/uploadify_214/jquery.uploadify.v2.1.4.min.js"></script>
+
 <link rel="stylesheet" href="/static/bd80dcc4ec449adf06670b068226708b.z.css" type="text/css" media="screen,print">
 <link rel="stylesheet" href="/static/win-chrome-punctuation.css" type="text/css" media="screen,print">
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#file_upload').uploadify({
+    'uploader'  : '/site_media/plugin/uploadify_214/uploadify.swf',
+    'script'    : '{%url "uploadify_script"%}',
+    'cancelImg' : '/site_media/plugin/uploadify_214/cancel.png',
+    'folder'    : '/upload',
+    'auto'      : false,//
+    'multi': true,//设置可以上传多个文件
+    'queueSizeLimit':20,//设置可以同时20个文件
+    'removeCompleted':false,//
+    'sizeLimit':10240000,//设置上传文件大小单位kb
+    'fileExt':'*.txt',//设置上传文件类型为TXT
+    'fileDesc':'TEXT Files',                
+    'onInit': function () {},
+    'onError' : function (event,ID,fileObj,errorObj) {
+            $('#id_span_msg').html("上传失败，错误码:"+errorObj.type+" "+errorObj.info);
+        },
+    'onSelect': function (e, queueId, fileObj) {
+        $('#id_span_msg').html("");
+    },
+    'onAllComplete': function (event, data) {
+        if(data.filesUploaded>=1){
+          $('#id_span_msg').html("上传成功！");
+        }                    
+    }                
+  });
+});
+</script>
+
 <style type="text/css">
 #sddm div a
 	{	position: relative;
@@ -150,52 +187,76 @@ document.onclick = mclose;
 </div>
 <div class="zg-wrap zu-main" role="main" style="">
 <div class="zu-main-content" style="">
-<form action="/save/{{essay.id}}/" name="addform"   method="post" id="Mody_form">
+
 <!-- start of content -->
-{%csrf_token%}
-<div class="zu-main-content-inner" id="zh-single-question">
-
-<div id="zh-question-title" class="zm-editable-status-editing">
-<div class="zg-section-big clearfix">
-<div class="zg-form-text-input add-question-title-form" style="position: relative;">
-<textarea class="zg-editor-input zu-seamless-input-origin-element" name=MTITLE mtitle id="mtitle" style="white-space: pre; height: 22px; min-height: 22px;">{{essay.title}}</textarea>
+<h1>选择txt文件上传，文件名为段落标题，文件内容为段落内容，最多20个文件</h1>
+<p></p>
+<h1>如果出现error:500错误 请检查txt文件是否为ansi编码</h1>
+<div class="demo-box">
+    <input id="file_upload" type="file" name="Filedata">
+    <div id="file_uploadQueue" class="uploadifyQueue"></div>
+    <p><a href="javascript:$('#file_upload').uploadifyUpload()">上传文件</a>
+    <a href="javascript:$('#file_upload').uploadifyClearQueue()">取消上传</a>
+    </p>
+    <p><span id="id_span_msg"></span></p>
 </div>
-
-
-</div>
-<div class="zg-section-big">
-
-<div id="zh-question-suggest-detail-container" class="zm-editable-status-editing">
-
-<div class="zm-editable-editor-wrap no-toolbar" style="">
-<div class="zm-editable-editor-outer">
-
-<div class="zm-editable-editor-field-wrap">
-	<textarea class="zg-editor-input zu-seamless-input-origin-element" name=MCONTENT mcontent id="mcontent" style="white-space: pre; height: 100px; min-height: 22px;overflow:auto;">{{essay.content}}</textarea>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<div style="" id="zh-question-suggest-topic-container" class="zm-tag-editor zg-section">
-
-
-
-<a href="/managehub/index"  class="zm-command-cancel">取消</a>
-<input type='submit' id="submit" name=Action class="zg-r5px zu-question-form-add zg-btn-blue" value="保存">
-
-
-</div>
-</form>
 <!-- end of content -->
+<div class="zu-main-content-inner" style="">
+<div class="zg-section" id="zh-home-list-title" style="">
 
+<div id="light" class="white_content" style="display:none">
+
+
+
+</div> 
+
+</div>
+
+</div>
 </div>
 <div class="zu-main-sidebar" style="">
 
 <div class="zm-side-section" style="">
-
+<div class="zm-side-section-inner" style="">
+<div class="zm-side-nav-group" style="">
+<ul class="zm-side-nav" id="zg-sidebar-nav" style="">
+<li class="zm-side-nav-li" style="">
+<a class="zm-side-nav-link" href="" style="">
+<i class="zg-icon zg-icon-sidenav-draft" style=""></i>
+我的分类
+</a>
+</li>
+</ul>
+</div>
+{%for etype in essay_type%}
+<a class="zm-side-nav-link" href="/etype/{{etype.id}}/" title="{{etype}}" style="">
+<i class="zg-icon zg-icon-sidenav-draft" style=""></i>
+{{etype}}({{etype.essay_set.count}})
+</a>
+{%endfor%}
+</br>
+<div class="zm-side-nav-group" style="">
+<ul class="zm-side-nav" style="">
+<li class="zm-side-nav-li" style="">
+<a class="zm-side-nav-link" href="http://www.zhihu.com/log/questions" style="">
+<i class="zg-icon zg-icon-sidenav-all" style=""></i>
+经常浏览
+</a>
+</li>
+</ul>
+</div>
+{%for vessay in vies%}
+<a class="zm-side-nav-link" href="/essay/{{vessay.id}}/" style="">
+<i class="zg-icon zg-icon-sidenav-draft" style=""></i>
+{{vessay}}
+</a>
+{%endfor%}
+</div>
+</div>
+<div id="zh-footer" class="zu-footer" style="">
+<div class="zg-wrap zu-footer-inner" style="">
+</div>
+</div>
 
 
 

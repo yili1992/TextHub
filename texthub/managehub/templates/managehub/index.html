@@ -28,7 +28,6 @@
 		overflow:hidden}
 
 	#sddm div a:hover
-	{	background-color:#0267CC}
 </style>
 <style>
 @font-face {
@@ -128,7 +127,7 @@ document.onclick = mclose;
 <a class="zu-top-nav-link" href="/managehub/index/" id="zh-top-link-home" style="">首页</a>
 </li>
 <li class="zu-top-nav-li " style="">
-<a class="zu-top-nav-link" href="http://www.zhihu.com/explore" style="">管理</a>
+<a class="zu-top-nav-link" href="/admin/" style="">管理</a>
 </li>
 <li class="top-nav-topic-selector zu-top-nav-li " id="zh-top-nav-item-topic" style="">
 
@@ -136,7 +135,10 @@ document.onclick = mclose;
 <div id="sddm">
 <div id="m1" onmouseover="mcancelclosetime()" onmouseout="mclosetime()" style="position: absolute;visibility: hidden;margin: 0;padding: 0;background: #EAEBD8;border: 1px solid #5970B2">
 <a  href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'" class="messages" >发布</a>
-<a  href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'" class="messages" >批量发布</a>
+
+<a  href = "/fabu/"   class="messages" >批量发布</a>
+
+
 </div>
 </div>
 </li>
@@ -203,6 +205,7 @@ function Check()
 </div>
 </div>
 </div>
+
 <div class="zm-add-question-form-topic-wrap">
 <div class="add-question-section-title">
 
@@ -244,7 +247,12 @@ function Check()
 </form>
                   </table>
 </div> 
+<!--批量发布 -->
+
+
+<!--end -->
 <div id="fade" class="black_overlay"></div>
+
 最新动态<input type="hidden" id="feed-ver" value="new" style="">
 </div>
 <div class="zu-main-feed-con navigable" id="zh-question-list"  style="">

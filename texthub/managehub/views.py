@@ -4,12 +4,14 @@ from django.template import Context, loader
 from managehub.models import *
 from django.http import Http404
 from django.core.urlresolvers import reverse
-from django.shortcuts import render,get_object_or_404,render_to_response
-from django.core.paginator import Paginator  
+from django.shortcuts import render,get_object_or_404,render_to_response 
 import datetime  
+from PIL import ImageFile
+import os,uuid
+from django.conf import settings
 from django.db.models import Q  
 from django.core.context_processors import csrf
-from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.csrf import csrf_protect,csrf_exempt
 
 temp=None
 
@@ -132,4 +134,45 @@ def publish(request):
             return index(request)
         return HttpResponse('error1.')
     return HttpResponse('请勿重复提交')
+def fabu(request):
+    template = loader.get_template('managehub/fabu.html')
+    viewsList=Essay.objects.all().order_by('-view_count')[:5]
+    context = Context({
+    'essay_type':EssayType.objects.all(),
+    'vies':viewsList
+    })
+    return HttpResponse(template.render(context))
 
+@csrf_exempt
+def uploadify_script(request):
+    response=HttpResponse()
+    response['Content-Type']="text/javascript"
+    ret="0"        
+    file = request.FILES.get("Filedata",None)        
+    if file:            
+        if _upload(file):
+            ret="1"
+        ret="2"
+    response.write(ret)
+    return response
+def _upload(file):
+    '''文件上传函数'''
+    if file:            
+        path=os.path.join(settings.MEDIA_ROOT,'upload')
+        file_name=file.name    
+        path_file=os.path.join(path,file_name)
+        file_upload = open( path_file, 'ab+')
+        for chunk in file.chunks():  
+            file_upload.write(chunk)  
+        file_upload.close()
+        fpath='D:/texthub/texthub/site_media/upload/'+file_name.encode('gb18030')
+        fp=open(fpath,'rb')
+        essay=Essay()
+        essay.title=file_name
+        essay.content= fp.read().decode('gbk').encode('utf-8')
+        essay.eType=EssayType.objects.get(id=6)
+        essay.pub_date=datetime.datetime.now()
+        essay.save()
+        fp.close()
+        return True
+    return False
