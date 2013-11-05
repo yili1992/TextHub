@@ -33,7 +33,8 @@ TextHub
  *2013-11-4 -  yili1992  增加批量发布功能
  
  --------------------------------------------------
- 还需要实现的2个难点：文本自动分类(使用Pymining  https://github.com/yili1992/pymining)，批量文本发布(uploadify已经实现)
+ 还需要实现的2个难点：1.文本自动分类(使用Pymining  https://github.com/yili1992/pymining)
+                      2.批量文本发布(uploadify已经实现)
  
  
  
