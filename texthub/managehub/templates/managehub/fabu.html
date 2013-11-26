@@ -15,9 +15,9 @@
 <script type="text/javascript" src="/site_media/js/jquery.js"></script>
 <script type="text/javascript" src="/site_media/plugin/uploadify_214/swfobject.js"></script>
 <script type="text/javascript" src="/site_media/plugin/uploadify_214/jquery.uploadify.v2.1.4.min.js"></script>
-
+<link rel="stylesheet" href="/static/jquery-ui.css" type="text/css">
+<script src="/static/jquery-ui.js"></script> 
 <link rel="stylesheet" href="/static/bd80dcc4ec449adf06670b068226708b.z.css" type="text/css" media="screen,print">
-<link rel="stylesheet" href="/static/win-chrome-punctuation.css" type="text/css" media="screen,print">
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -50,6 +50,32 @@ $(document).ready(function() {
 </script>
 
 <style type="text/css">
+ .black_overlay{ 
+            display: none; 
+            position: absolute; 
+            top: 0%; 
+            left: 0%; 
+            width: 1024px; 
+            height: 1024px; 
+            background-color: black; 
+            z-index:1001; 
+            -moz-opacity: 0.8; 
+            opacity:.80; 
+            filter: alpha(opacity=88); 
+        } 
+        .white_content { 
+            display: none; 
+            position: absolute; 
+            top: 25%; 
+            left: 25%; 
+            width: 55%; 
+            height: 8%; 
+            padding: 20px; 
+            font: 12px arial;
+            background-color: white; 
+            z-index:1002; 
+            overflow: auto; 
+        } 
 #sddm div a
 	{	position: relative;
 		display: block;
@@ -137,7 +163,7 @@ document.onclick = mclose;
 
 <div class="top-nav-profile" style="">
 <a href="http://www.zhihu.com/people/zhao-li-66" class="zu-top-nav-userinfo " id=":0" role="button" aria-haspopup="true" aria-activedescendant="" style="" aria-expanded="false">
-<span class="name" style="">yili1992</span>
+<span class="name" style="">{{user}}</span>
 <img class="avatar" src="/static/6c3b2735f_s.jpg" style="">
 <span id="zh-top-nav-new-pm" class="zg-noti-number zu-top-nav-pm-count" style="visibility: hidden;" data-count="0">
 </span>
@@ -193,13 +219,69 @@ document.onclick = mclose;
 <p></p>
 <h1>如果出现error:500错误 请检查txt文件是否为ansi编码</h1>
 <div class="demo-box">
+
     <input id="file_upload" type="file" name="Filedata">
-    <div id="file_uploadQueue" class="uploadifyQueue"></div>
+    <div id="file_uploadQueue" class="uploadifyQueue">
+    	
+    </div>
     <p><a href="javascript:$('#file_upload').uploadifyUpload()">上传文件</a>
     <a href="javascript:$('#file_upload').uploadifyClearQueue()">取消上传</a>
     </p>
     <p><span id="id_span_msg"></span></p>
+
+<script language="javascript">
+function Check()
+{ 
+     if (document.addform.ETYPE.value=="未选择"&&document.addform.Newtype.value.length==0) {
+  alert("提示：\n\n类别不能为空。");
+       return false;
+      } 
+    
+     return true;
+}
+</script>
+
+    <div class="add-question-section-title">
+ <form method="get" action="/mulpulish/" id="zh-top-search-form" class="zu-top-search-form form-with-magnify"  name="addform" onSubmit="return Check()" style="">
+选择类别：
+<select name=ETYPE etypes,id="etypes">
+<option value="未选择">未选择</option>
+<option value="自动分类">自动分类</option>
+{%for etype in essay_type%}
+
+<option value="{{etype}}">{{etype}}</option>
+
+{%endfor%}
+</select>
+
+<a href="#" >
+<!--
+<input type=button  class="zg-r5px zu-question-form-add zg-btn-blue" value="增加类别" onclick = "document.getElementById('typelight').style.display='block'">
+-->
+</a>
+<div id="typelight" class="white_content" style="display:none">
+<div class="zg-form-text-input add-question-title-form" style="position: relative; width: 100px;">
+<textarea class="zg-editor-input zu-seamless-input-origin-element" name=Newtype ntype="输入类别名" id="ntype"
+ aria-label="输入类别名" placeholder="输入类别名" aria-haspopup="true" autocomplete="off"style="white-space: pre; height: 22px; min-height: 22px;"></textarea>
 </div>
+</div>
+<button type="submit" id="searchsubmit" class="zu-top-add-question" id="zu-top-add-question" style="" href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">批量发布</button>
+</div>
+<div id="light" class="white_content">正在上传，请稍等....</div>
+ 
+        <script>
+        $( "#light" ).progressbar({
+            value: false
+            disabled: true
+  
+        });
+        </script>
+<div id="fade" class="black_overlay"></div> 
+
+</form>
+</div>
+
+
 <!-- end of content -->
 <div class="zu-main-content-inner" style="">
 <div class="zg-section" id="zh-home-list-title" style="">
@@ -262,19 +344,11 @@ document.onclick = mclose;
 
 <input type="hidden" name="_xsrf" value="25563a936c5243b69cae14782ac99742" style="">
 
-<div class="zh-backtotop" style="opacity: 1;">
-	<a data-action="backtotop" data-tip="s$r$回到顶部" href="#top" class="btn-backtotop btn-action" style="">
-		<div class="arrow" style="">
-			
-		</div>
-		<div class="stick" style="">
-		</div>
-	</a>
-</div>
+
 <div id="zh-tooltip" style="visibility: hidden; left: 943px; top: 7195px; display: none;" class="tooltip right">
 <div class="tooltip-arrow">
 </div>
-<div class="tooltip-inner" >回到顶部</div>
 </div>
 <div id="zh-global-spinner" style="display: none;">加载中…</div>
+
 </body></html>

@@ -11284,8 +11284,6 @@ float:left
 .zu-top-search-form
 {
 float:left;
-width:367px;
-height:30px;
 line-height:30px
 }
 .zu-top-search-input
@@ -11343,7 +11341,6 @@ border:1px solid #0B6ED3
 }
 .zu-top-add-question
 {
-float:left;
 margin:0 0 0 6px;
 background:#0d77e4;
 background-color:#0e78e7;

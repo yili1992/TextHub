@@ -227,7 +227,7 @@ span.dot{margin:0 3px}
 .footer div{text-align:center}
 .bottom{}
 .inner-wrapper{width:740px;margin:0 auto}
-.logo{position:absolute;margin-top:-62px;top:50%;left:-400px;width:345px;height:124px;background:url(http://static.zhihu.com/static/img/201304_sign/logo.png) no-repeat;background-size:contain}
+.logo{position:absolute;margin-top:-62px;top:50%;left:-400px;width:345px;height:124px;background:url(logo.png) no-repeat;background-size:contain}
 .form-wrapper{min-height:360px;width:340px;height:100%;position:relative;margin-left:400px}
 #signup,#signin{width:202px}
 #signin{margin:34px 0}
