@@ -1,22 +1,6 @@
 # -*- coding:utf-8 -*-  
 from django.db import models 
-class Users(models.Model): 
-    id=models.AutoField('id',primary_key=True) 
-    #相当于varchar字符类型  
-    uname=models.CharField(verbose_name='用户名',max_length=25)  
-    baseUser=models.ForeignKey('self','id',  
-    null=True, blank=True,  
-    verbose_name='所属用户')  
-    pwd=models.CharField(verbose_name='密码',max_length=12)  
-    email=models.CharField(max_length=25)     
-    last_login_ip=models.IPAddressField(verbose_name='最后登录IP')  
-    last_login_date=models.DateTimeField(verbose_name='最后登录日期')  
-    #重载meta模块,修改Admin后台中显示的名称  
-    class Meta:  
-        verbose_name = '用户'  
-        verbose_name_plural = '用户列表'  
-    def __unicode__(self):  
-        return self.uname   
+
 #文章类型列表     
 class EssayType(models.Model):  
     id=models.AutoField('id',primary_key=True)  

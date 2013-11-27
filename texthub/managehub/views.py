@@ -17,6 +17,7 @@ from django.contrib.auth.decorators import login_required
 
 
 logoUser=None
+superuser=None
 temp=None
 classs_list=["交通","体育","军事","医药","政治","教育","环境","经济","艺术","计算机"]
 
@@ -44,12 +45,15 @@ def index(request,etype=None,keyword=None):
     detaillist2=datas.order_by('-pub_date') 
     if keyword or etype :
         context={
+            'super':superuser,
+            'user':logoUser,
             'essaydetails':detaillist2,
             'essay_type':EssayType.objects.all(),  
             'vies':viewsList}
         context.update(csrf(request))
     else:
         context={
+            'super':superuser,
             'user':logoUser,
             'essaydetails':detaillist,
             'essay_type':EssayType.objects.all(),  
@@ -328,7 +332,9 @@ def login_view(request):
     if user is not None:  
         login(request, user) 
         global logoUser   
-        logoUser = request.user      
+        logoUser = request.user
+        global superuser 
+        superuser=request.user.is_superuser       
         return index(request) 
     else:  
         #验证失败

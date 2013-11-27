@@ -96,7 +96,7 @@ document.onclick = mclose;
 <body class="zhi" style="">
 <div role="navigation" class="zu-top" style="">
 <div class="zg-wrap" id="zh-top-inner" style="">
-<a class="zu-top-link-logo" id="zh-top-link-logo" style="">知乎</a>
+
 
 <div class="top-nav-profile" style="">
 <a href="http://www.zhihu.com/people/zhao-li-66" class="zu-top-nav-userinfo " id=":0" role="button" aria-haspopup="true" aria-activedescendant="" style="" aria-expanded="false">
@@ -155,7 +155,7 @@ document.onclick = mclose;
 <div class="zu-main-content-inner" id="zh-single-question">
 <div id="zh-question-title" class="zm-editable-status-editing">
 <h1 > <font size="10px">{{essay.title}}</font> </h1>
-<span >属于<a href="/etype/{{essay.eType_id}}/" title="查看该类所有文章" rel="category">{{essay.eType}}</a>. on {{date_format.0}}, {{date_format.1}} {{date_format.2}}th, {{date_format.3}} by JM</span>
+<span >属于<a href="/etype/{{essay.eType_id}}/" title="查看该类所有文章" rel="category">{{essay.eType}}</a>     发表于{{essay.pub_date.year}} .{{essay.pub_date.month}} .{{essay.pub_date.day}} {{essay.pub_date.hour}}:{{essay.pub_date.minute}}</span>
 <br></br>
 <font size="4px">
 {{essay.content|safe}}
