@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!-- saved from url=(0021)http://www.zhihu.com/ -->
-<html lang="zh-CN" dropeffect="none" class="no-touch js no-touch no-mobile" style="">
+
+<html lang="zh-CN" dropeffect="none"  style="">
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -128,15 +128,15 @@ document.onclick = mclose;
 <a class="zu-top-nav-link" href="/managehub/index/" id="zh-top-link-home" style="">首页</a>
 </li>
 <li class="zu-top-nav-li " style="">
-<a class="zu-top-nav-link" href="/admin/" style="">管理</a>
+<a class="zu-top-nav-link" href="/admin/"  target="_blank" style="">管理</a>
 </li>
 <li class="top-nav-topic-selector zu-top-nav-li " id="zh-top-nav-item-topic" style="">
 
-<a class="zu-top-nav-link"  id="top-nav-dd-topic" href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'" class="messages" onmouseover="mopen('m1')" onmouseout="mclosetime()">发布</a>
+<a class="zu-top-nav-link"  id="top-nav-dd-topic" href = "/fabu1/"   class="messages" onmouseover="mopen('m1')" onmouseout="mclosetime()">发布</a>
 <div id="sddm">
 <div id="m1" onmouseover="mcancelclosetime()" onmouseout="mclosetime()" style="position: absolute;visibility: hidden;margin: 0;padding: 0;background: #EAEBD8;border: 1px solid #5970B2">
-<a  href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'" class="messages" >发布</a>
-<a  href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'" class="messages" >批量发布</a>
+<a  href = "/fabu1/"   class="messages" >发布</a>
+<a  href = "/fabu/"   class="messages"  >批量发布</a>
 </div>
 </div>
 </li>
@@ -148,18 +148,21 @@ document.onclick = mclose;
 </div>
 </div>
 </div>
-<div class="zg-wrap zu-main" role="main" style="">
-<div class="zu-main-content" style="">
+<div class="zg-wrap zu-main question-page" id="zh-single-question-page"  role="main">
+<div class="zu-main-content" >
 
 <!-- start of content -->
 <div class="zu-main-content-inner" id="zh-single-question">
-<div id="zh-question-title" class="zm-editable-status-editing">
-<h1 > <font size="10px">{{essay.title}}</font> </h1>
+<div id="zh-question-title" class="zm-editable-status-normal">
+<h2 class="zm-item-title zm-editable-content">{{essay.title}}</h2>
+<br>
 <span >属于<a href="/etype/{{essay.eType_id}}/" title="查看该类所有文章" rel="category">{{essay.eType}}</a>     发表于{{essay.pub_date.year}} .{{essay.pub_date.month}} .{{essay.pub_date.day}} {{essay.pub_date.hour}}:{{essay.pub_date.minute}}</span>
 <br></br>
-<font size="4px">
-{{essay.content|safe}}
-</font>
+<div id="zh-question-detail" class="zm-item-rich-text zm-editable-status-normal" >
+<div class="zm-editable-content">
+{{essay.content}}
+</div>
+</div>
 <br></br>
 浏览: {{essay.view_count}}   次
 </div>

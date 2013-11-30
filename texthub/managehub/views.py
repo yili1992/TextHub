@@ -246,16 +246,13 @@ def mulpulish(request):
                     newtype.save()
                     etypename=newtype.tname
                 etype=EssayType.objects.get(tname=etypename)
-                conlist=pcontent.split("\n    ")
-                for flist in conlist:
-                    if not flist.strip():
-                        continue
-                    essay=Essay()
-                    essay.title=ptitle
-                    essay.content= flist
-                    essay.eType=etype
-                    essay.pub_date=datetime.datetime.now()
-                    essay.save()
+
+                essay=Essay()
+                essay.title=ptitle
+                essay.content= pcontent
+                essay.eType=etype
+                essay.pub_date=datetime.datetime.now()
+                essay.save()
                 fp.close()
                 os.remove(fpath)
             return index(request)
@@ -346,3 +343,40 @@ def logout_view(request):
     context = Context({
     })
     return HttpResponse(template.render(context))
+def fabu1(request,etype=None,keyword=None):  
+    try:  
+        etype=int(etype)  
+    except:  
+        etype=None 
+    if temp and keyword:
+        datas=Essay.objects.all().filter(eType=temp).filter(Q(title__icontains=keyword)|Q(content__icontains=keyword)).distinct()
+        global temp
+        temp=None   
+    elif etype:  
+        datas=Essay.objects.all().filter(eType=etype)
+        global temp
+        temp=etype
+    elif keyword:  
+        datas=Essay.objects.all().filter(Q(title__icontains=keyword)|Q(content__icontains=keyword)).distinct() 
+    else:  
+        datas=Essay.objects.all()
+    viewsList=datas.order_by('-view_count')[:5] 
+    detaillist=datas.order_by('-pub_date')[:10] 
+    detaillist2=datas.order_by('-pub_date') 
+    if keyword or etype :
+        context={
+            'super':superuser,
+            'user':logoUser,
+            'essaydetails':detaillist2,
+            'essay_type':EssayType.objects.all(),  
+            'vies':viewsList}
+        context.update(csrf(request))
+    else:
+        context={
+            'super':superuser,
+            'user':logoUser,
+            'essaydetails':detaillist,
+            'essay_type':EssayType.objects.all(),  
+            'vies':viewsList}
+        context.update(csrf(request))
+    return render_to_response('managehub/index2.html',context)

@@ -52,7 +52,7 @@ jQuery.fn.limit=function(){
         var num = $(this).attr("limit");  
         if(objLength > num){  
 $(this).attr("title",objString);  
-            objString = $(this).text(objString.substring(0,num) + "......（点击标题显示全部）");  
+            objString = $(this).text(objString.substring(0,num) + "......");  
         }  
     })  
 }  
@@ -172,7 +172,7 @@ document.onclick = mclose;
 <div class="zu-main-content-inner" style="">
 <div class="zg-section" id="zh-home-list-title" style="">
 
-<div id="light" class="white_content" style="display:none">
+<div id="light" class="white_content" style="display:block">
 <script language="javascript">
 function Check()
 { 
@@ -293,9 +293,11 @@ function Check()
 <div class="zm-item-answer-detail" style="">
 <div class="zm-item-rich-text" >
 
-<p limit="220" >                                      
+<div >
+<p limit="220">                                      
 {{essay.content}}
 </p>
+</div>
 
 </div>
 </div>
